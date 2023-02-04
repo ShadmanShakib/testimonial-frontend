@@ -7,7 +7,7 @@ function Header() {
     <header className=" ">
       <nav className="flex justify-between border-b border-gray-100/0 bg-white/90 px-4 py-2 backdrop-blur-lg backdrop-filter duration-300 sm:px-8">
         <Image src="/next.svg" height={30} width={60} alt="logo" />
-        <ul>
+        <ul className="flex">
           <li>Pricing</li>
           <li>Features</li>
           <li>Blog</li>
@@ -18,7 +18,9 @@ function Header() {
 
           <Link href="/signup">Sign up for free</Link>
         </ul>
-        <MenuIcon />
+        <div className="md:hidden">
+          <MenuIcon />
+        </div>
       </nav>
     </header>
   );

@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export default function signinasync(username: string, password: string) {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`;
+export default function signupapi(username: string, password: string) {
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup`;
   const data = JSON.stringify({
     username: username,
     password: password,
@@ -18,7 +18,5 @@ export default function signinasync(username: string, password: string) {
 
   axios(config)
     .then((res) => console.log(res.data))
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch((err) => console.error(err));
 }
