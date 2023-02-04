@@ -1,9 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-function SignInForm() {
+function SignInForm({ signinasync }: any) {
   const { register, handleSubmit } = useForm();
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) =>
+    signinasync(data.username, data.password)
+  );
   return (
     <section className="mx-auto max-w-md bg-white py-8 px-4 shadow dark:bg-gray-800 sm:rounded-lg sm:px-10">
       <div className="w-full px-3">
@@ -32,8 +34,8 @@ function SignInForm() {
         </label>
         <input
           className="w-full py-2 px-3 text-gray-600 outline-none dark:text-gray-800"
-          type="email"
-          {...register("email")}
+          type="string"
+          {...register("username")}
           placeholder="Your email"
         />
       </div>
