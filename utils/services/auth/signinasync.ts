@@ -17,7 +17,9 @@ export default function signinasync(username: string, password: string) {
   };
 
   axios(config)
-    .then((res) => console.log(res.data))
+    .then((res) =>
+      sessionStorage.setItem("access_token", res.data.access_token)
+    )
     .catch((error) => {
       console.log(error);
     });
