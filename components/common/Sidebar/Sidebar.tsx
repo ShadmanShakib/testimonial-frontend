@@ -7,6 +7,7 @@ import {
   TagIcon,
   TeamIcon,
 } from "@/components/icons";
+import Link from "next/link";
 export default function Sidebar() {
   return (
     <aside className="min-h-screen w-64 bg-gray-50 pt-4">
@@ -29,9 +30,11 @@ export default function Sidebar() {
             </svg>
           </div>
         </button>
-        <SidebarBtn title="form">
-          <FormIcon />
-        </SidebarBtn>
+        <Link href="/app/forms">
+          <SidebarBtn title="form">
+            <FormIcon />
+          </SidebarBtn>
+        </Link>
         <div>
           <div className="font-heading mb-2 px-2 text-[0.7rem] font-extrabold uppercase tracking-wider text-zinc-400">
             Manage
