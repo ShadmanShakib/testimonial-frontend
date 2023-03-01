@@ -4,3 +4,5 @@ export { default as FormIcon } from "./FormIcon";
 export { default as SearchIcon } from "./SearchIcon";
 export { default as TagIcon } from "./TagIcon";
 export { default as TeamIcon } from "./TeamIcon";
+export { default as DownSvg } from "./DownSvg";
+export { default as DesignSvg } from "./DesignSvg";

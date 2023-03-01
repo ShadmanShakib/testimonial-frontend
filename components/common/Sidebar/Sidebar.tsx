@@ -11,7 +11,7 @@ import Link from "next/link";
 export default function Sidebar() {
   return (
     <aside className="min-h-screen w-64 bg-gray-50 pt-4">
-      <div className="">
+      <div className="px-4">
         <button className="">
           <div className="flex items-center">
             <p>John Cena</p>
@@ -31,12 +31,12 @@ export default function Sidebar() {
           </div>
         </button>
         <Link href="/app/forms">
-          <SidebarBtn title="form">
+          <SidebarBtn title="Forms">
             <FormIcon />
           </SidebarBtn>
         </Link>
         <div>
-          <div className="font-heading mb-2 px-2 text-[0.7rem] font-extrabold uppercase tracking-wider text-zinc-400">
+          <div className="font-heading mb-2  text-[0.7rem] font-extrabold uppercase tracking-wider text-zinc-400">
             Manage
           </div>
           <SidebarBtn title="Testimonials">
