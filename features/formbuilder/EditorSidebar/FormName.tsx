@@ -6,7 +6,6 @@ function FormName() {
       <div
         id="form-name"
         className="title relative mt-4 inline-block rounded p-0.5 outline-dashed outline-1 outline-transparent duration-100 hover:outline-gray-300 focus:pr-0.5 focus:outline-gray-300"
-        contentEditable="true"
       >
         <span className="editable-content">Notion Testimonial Form</span>
         <svg
