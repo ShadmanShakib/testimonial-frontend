@@ -1,6 +1,9 @@
 import React from "react";
-
-export default function DownSvg() {
+import cn from "classnames";
+export default function DownSvg({ show }: IDownSvg) {
+  const cls = cn("text-gray-600 duration-200 transform", {
+    "rotate-180": show,
+  });
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,9 +15,13 @@ export default function DownSvg() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="text-gray-600 duration-200 "
+      className={cls}
     >
       <polyline points="6 9 12 15 18 9"></polyline>
     </svg>
   );
+}
+
+interface IDownSvg {
+  show: boolean;
 }
