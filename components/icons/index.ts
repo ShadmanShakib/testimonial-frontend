@@ -7,3 +7,4 @@ export { default as TeamIcon } from "./TeamIcon";
 export { default as DownSvg } from "./DownSvg";
 export { default as DesignSvg } from "./DesignSvg";
 export { default as WelcomeSvg } from "./WelcomeSvg";
+export { default as ResponseSvg } from "./ResponseSvg";
