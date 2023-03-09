@@ -11,3 +11,6 @@ export { default as ResponseSvg } from "./ResponseSvg";
 export { default as AdvanceSvg } from "./AdvanceSvg";
 export { default as AttributeSvg } from "./AttributeSvg";
 export { default as CostomDomainSvg } from "./CostomDomainSvg";
+export { default as LaptopSvg } from "./LaptopSvg";
+export { default as PhoneSvg } from "./PhoneSvg";
+export { default as VideoSvg } from "./VideoSvg";

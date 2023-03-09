@@ -20,6 +20,9 @@ function EditorSidebar() {
           <DesignBtn />
           <Welcome />
           <Response />
+          <button className="block w-full rounded-lg bg-black px-4 py-2.5 text-sm font-medium text-white">
+            Save changes
+          </button>
         </div>
       </div>
     </div>

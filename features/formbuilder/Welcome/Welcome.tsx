@@ -1,6 +1,7 @@
 import React from "react";
 import ExpandBtn from "../ExpandBtn";
 import { WelcomeSvg } from "@/components/icons";
+import WelcomeEditor from "./WelcomeEditor";
 function Welcome() {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
@@ -12,6 +13,7 @@ function Welcome() {
         icon={<WelcomeSvg />}
         handleClick={handleClick}
       />
+      {show && <WelcomeEditor />}
     </div>
   );
 }
