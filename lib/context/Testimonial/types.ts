@@ -2,7 +2,7 @@ export interface State {
   title: string;
   message: string;
   collectVideo: boolean;
-  collectAudio: boolean;
+  collectText: boolean;
 }
 
 export type Action = {

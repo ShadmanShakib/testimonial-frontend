@@ -1,11 +1,12 @@
 import { VideoSvg, PenSvg } from "@/components/icons";
 import React from "react";
-
+import { useTestimonidal } from "@/lib/context/Testimonial";
 function PreviewCard() {
+  const { title } = useTestimonidal();
   return (
     <div className="relativew-full max-w-lg shadow-md">
       <div className="showdow-xl flex flex-col justify-items-stretch rounded-xl bg-white px-2 py-4">
-        <h1>Share a Testmonial</h1>
+        <h1 className="text-xl font-medium ">{title}</h1>
         <div className=" mt-4">
           <p>Do you love using our product? We do love to hear about it!</p>
           <ul>

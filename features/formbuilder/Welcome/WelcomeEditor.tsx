@@ -1,6 +1,7 @@
 import React from "react";
-
+import { useTestimonidal } from "@/lib/context/Testimonial";
 export default function WelcomeEditor() {
+  const { title, editTitle } = useTestimonidal();
   return (
     <div>
       <div className="w-full">
@@ -9,6 +10,8 @@ export default function WelcomeEditor() {
           <input
             className="flex-grow rounded-md focus:ring-purple-600"
             type="text"
+            onChange={(e) => editTitle(e.target.value)}
+            defaultValue={title}
           />
         </div>
       </div>
