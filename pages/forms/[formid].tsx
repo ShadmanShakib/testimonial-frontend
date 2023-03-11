@@ -5,7 +5,6 @@ export default function FormId() {
   return (
     <div className="flex h-full w-full">
       <EditorSidebar />
-
       <Preview />
     </div>
   );

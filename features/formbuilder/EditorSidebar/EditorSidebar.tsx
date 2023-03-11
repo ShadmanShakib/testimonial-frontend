@@ -1,5 +1,6 @@
 import React from "react";
 import DesignBtn from "../DesignBtn";
+import { Welcome, Response } from "@/features/formbuilder";
 import BackBtn from "./BackBtn";
 import FormName from "./FormName";
 function EditorSidebar() {
@@ -17,6 +18,11 @@ function EditorSidebar() {
         </div>
         <div className="mt-4 flex flex-col pb-6">
           <DesignBtn />
+          <Welcome />
+          <Response />
+          <button className="block w-full rounded-lg bg-black px-4 py-2.5 text-sm font-medium text-white">
+            Save changes
+          </button>
         </div>
       </div>
     </div>
