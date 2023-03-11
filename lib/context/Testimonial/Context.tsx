@@ -13,6 +13,8 @@ const testimonidalReducer = (state: State, action: Action) => {
   switch (action.type) {
     case "EDIT_TITLE":
       return { ...state, title: action.payload };
+    case "SET_MESSAGE":
+      return { ...state, message: action.payload };
     default:
       return { ...state };
   }

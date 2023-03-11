@@ -5,7 +5,9 @@ export interface State {
   collectText: boolean;
 }
 
-export type Action = {
-  type: "EDIT_TITLE";
-  payload: string;
-};
+export type Action =
+  | {
+      type: "EDIT_TITLE";
+      payload: string;
+    }
+  | { type: "SET_MESSAGE"; payload: string };
