@@ -15,3 +15,4 @@ export { default as LaptopSvg } from "./LaptopSvg";
 export { default as PhoneSvg } from "./PhoneSvg";
 export { default as VideoSvg } from "./VideoSvg";
 export { default as PenSvg } from "./PenSvg";
+export { default as StarSvg } from "./StarSvg";
