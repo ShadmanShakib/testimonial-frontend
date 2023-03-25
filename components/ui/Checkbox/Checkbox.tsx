@@ -19,6 +19,6 @@ export default function Checkbox(props: ICheckbox) {
   );
 }
 
-interface ICheckbox extends HTMLInputElement {
+interface ICheckbox extends Partial<HTMLInputElement> {
   label: string;
 }
