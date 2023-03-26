@@ -1,7 +1,16 @@
 import React from "react";
 import { useTestimonidal } from "@/lib/context/Testimonial";
 export default function WelcomeEditor() {
-  const { title, editTitle } = useTestimonidal();
+  const {
+    title,
+    editTitle,
+    message,
+    editMessage,
+    collectText,
+    collectVideo,
+    toggleTextCheckbox,
+    toggleVideoCheckbox,
+  } = useTestimonidal();
   return (
     <div>
       <div className="w-full">
@@ -20,6 +29,8 @@ export default function WelcomeEditor() {
           Introductory Message
         </label>
         <textarea
+          defaultValue={message}
+          onChange={(e) => editMessage(e.target.value)}
           name="message"
           placeholder="Have we made a positive impact on your product or service? Spread the love with a text or video shoutout!"
           className="focus:border-primary mb-6 mt-2 block h-40 w-full appearance-none rounded-md border-gray-300 py-2.5 text-sm shadow-sm focus:ring-purple-600"
@@ -27,8 +38,8 @@ export default function WelcomeEditor() {
       </div>
       <div className="flex items-center ">
         <input
-          name=""
-          id=""
+          checked={collectVideo}
+          onChange={toggleVideoCheckbox}
           type="checkbox"
           className="mr-3 block flex-none appearance-none rounded-md border-gray-300 bg-contain bg-center bg-no-repeat text-sm shadow-sm checked:bg-purple-600 hover:checked:bg-purple-400 focus:outline-none focus:ring-0 focus:ring-transparent checked:focus:bg-purple-400 disabled:cursor-not-allowed"
         />
@@ -36,8 +47,8 @@ export default function WelcomeEditor() {
       </div>
       <div className="flex items-center">
         <input
-          name=""
-          id=""
+          onChange={toggleTextCheckbox}
+          checked={collectText}
           type="checkbox"
           className="mr-3 block flex-none appearance-none rounded-md border-gray-300 bg-contain bg-center bg-no-repeat text-sm shadow-sm checked:bg-purple-600 hover:checked:bg-purple-400 focus:outline-none focus:ring-0 focus:ring-transparent checked:focus:bg-purple-400 disabled:cursor-not-allowed"
         />
