@@ -1,6 +1,6 @@
 import React from "react";
 import { Sidebar } from "@/components/common";
-import { Title, SearchBox, Button } from "@/components/ui";
+import { Title, SearchBox, Button, Table } from "@/components/ui";
 function Dashboard() {
   return (
     <div className="flex">
@@ -41,6 +41,7 @@ function Dashboard() {
           <SearchBox />
           <Button title="Search" variant="primary" />
         </div>
+        <Table />
       </div>
     </div>
   );

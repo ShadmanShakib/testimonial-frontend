@@ -44,9 +44,9 @@ function SearchBox() {
               x2="192"
               y2="128"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="16"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="16"
             ></line>
             <line
               x1="24"
@@ -54,9 +54,9 @@ function SearchBox() {
               x2="232"
               y2="80"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="16"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="16"
             ></line>
             <line
               x1="104"
