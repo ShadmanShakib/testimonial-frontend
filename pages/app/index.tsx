@@ -4,9 +4,8 @@ import { Title, SearchBox, Button, Table } from "@/components/ui";
 function Dashboard() {
   return (
     <div className="flex">
-      <aside>
-        <Sidebar />
-      </aside>
+      <Sidebar />
+
       <div className="overflow-y-sroll relative h-full flex-grow px-6 sm:px-10">
         <div className="flex min-h-[34px] items-center">
           <Title title="Your Testimonials" />
