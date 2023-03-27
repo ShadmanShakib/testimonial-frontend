@@ -6,7 +6,8 @@ export interface ProviderProps {
 export interface State {
   logoUrl?: string;
   backgroundColor: string;
-  buttonColor: string;
+
+  primaryColor: string;
 }
 
 export type Action =
@@ -15,6 +16,6 @@ export type Action =
       payload: string;
     }
   | {
-      type: "SET_BUTTON_COLOR";
+      type: "SET_PRIMARY_COLOR";
       payload: string;
     };
