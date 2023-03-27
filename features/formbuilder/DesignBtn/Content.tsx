@@ -1,6 +1,7 @@
 import React from "react";
-
+import { useFormContext } from "@/lib/context";
 function Content() {
+  const { backgroundColor, setBgColor } = useFormContext();
   return (
     <div className="py-4">
       <div className="flex flex-col gap-4">
@@ -33,12 +34,15 @@ function Content() {
                   />
                 </div>
               </div>
+              {/* background color input */}
               <input
                 type="text"
                 className="w-full border-none focus:ring-0 "
                 placeholder="#4e46e5"
                 name=""
                 id=""
+                value={backgroundColor}
+                onChange={(e) => setBgColor(e.target.value)}
               />
             </div>
           </div>
