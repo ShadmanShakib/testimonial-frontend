@@ -1,3 +1,8 @@
+import React from "react";
+
+export interface ProviderProps {
+  children: React.ReactNode;
+}
 export interface State {
   logoUrl?: string;
   backgroundColor: string;
