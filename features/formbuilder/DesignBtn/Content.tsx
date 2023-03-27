@@ -1,7 +1,8 @@
 import React from "react";
 import { useFormContext } from "@/lib/context";
 function Content() {
-  const { backgroundColor, setBgColor } = useFormContext();
+  const { backgroundColor, setBgColor, primaryColor, setPrimaryColor } =
+    useFormContext();
   return (
     <div className="py-4">
       <div className="flex flex-col gap-4">
@@ -11,7 +12,7 @@ function Content() {
         </button>
       </div>
       <div className="flex w-full gap-4">
-        {/* Button color picker */}
+        {/* Primary color picker */}
         <div className="w-full">
           <div>
             <div className="block text-sm font-medium text-gray-800">
@@ -24,24 +25,26 @@ function Content() {
               <div className="relative">
                 <button
                   type="button"
-                  className="mt-1 h-6 w-6 rounded-full border"
+                  style={{ backgroundColor: `${primaryColor}` }}
+                  className={`mt-1 h-6 w-6 rounded-full border `}
                 ></button>
                 <div className="absolute top-0">
                   <input
+                    onChange={(e) => setPrimaryColor(e.target.value)}
                     tabIndex={-1}
                     type="color"
                     className="h-6 w-6 opacity-0"
                   />
                 </div>
               </div>
-              {/* background color input */}
+              {/* primary color input */}
               <input
                 type="text"
                 className="w-full border-none focus:ring-0 "
-                placeholder="#4e46e5"
+                placeholder={primaryColor}
+                value={primaryColor}
                 name=""
                 id=""
-                value={backgroundColor}
                 onChange={(e) => setBgColor(e.target.value)}
               />
             </div>
@@ -56,19 +59,19 @@ function Content() {
               </div>
             </div>
           </div>
-          <div className="focus-within:border-primary-base focus-within:ring-primary-light/10 mt-2 flex w-full items-center rounded-md border bg-white px-2 duration-100 focus-within:ring-4">
+          <div className="mt-2 flex w-full items-center rounded-md border bg-white px-2 duration-100 focus-within:border-purple-600 focus-within:ring-4 focus-within:ring-purple-600/10">
             <div className="relative">
               <button
+                style={{ backgroundColor: `${backgroundColor}` }}
                 type="button"
                 className="mt-1 h-6 w-6 rounded-full border"
               ></button>
               <div className="absolute top-0">
                 <input
+                  onChange={(e) => setBgColor(e.target.value)}
                   tabIndex={-1}
                   type="color"
-                  className="h-0 w-0 opacity-0"
-                  name=""
-                  id=""
+                  className="h-6 w-6 opacity-0"
                 />
               </div>
             </div>
@@ -78,6 +81,7 @@ function Content() {
               placeholder="#4e46e5"
               name=""
               id=""
+              value={backgroundColor}
             />
           </div>
         </div>
