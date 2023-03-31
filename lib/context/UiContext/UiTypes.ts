@@ -1,7 +1,12 @@
 export interface State {
-  isDesign: false;
+  isDesign: boolean;
+  isImageModal: boolean;
 }
 
-export type Action = {
-  type: "TOGGLE_ISDESIGN";
-};
+export type Action =
+  | {
+      type: "TOGGLE_ISDESIGN";
+    }
+  | {
+      type: "TOGGLE_IMAGE_MODAL";
+    };

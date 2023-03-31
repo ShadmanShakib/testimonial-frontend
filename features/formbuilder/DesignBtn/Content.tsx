@@ -1,14 +1,22 @@
 import React from "react";
 import { useFormContext } from "@/lib/context";
+import Image from "next/image";
+import { useUiContext } from "@/lib/context";
 function Content() {
   const { backgroundColor, setBgColor, primaryColor, setPrimaryColor } =
     useFormContext();
+  const { isImageModal, setIsModal } = useUiContext();
   return (
     <div className="py-4">
       <div className="flex flex-col gap-4">
         <h1>Logo</h1>
-        <button className="mt-2 text-left duration-100 hover:opacity-80">
-          <div className="flex h-20 min-w-[156px] flex-col items-center justify-center rounded-md border bg-white px-4 py-2"></div>
+        <button
+          onClick={() => setIsModal()}
+          className="mt-2 text-left duration-100 hover:opacity-80"
+        >
+          <div className="flex h-20 w-48 min-w-[156px] flex-col items-center justify-center rounded-md border bg-white px-4 py-2">
+            <Image width={100} height={40} alt="" src="/next.svg" />
+          </div>
         </button>
       </div>
       <div className="flex w-full gap-4">
@@ -17,7 +25,8 @@ function Content() {
           <div>
             <div className="block text-sm font-medium text-gray-800">
               <div className="flex items-center gap-2">
-                Primary Color <div></div>
+                Primary Color
+                <div></div>
               </div>
             </div>
             {/* Input */}
