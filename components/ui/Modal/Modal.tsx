@@ -3,7 +3,7 @@ import ReactModal from "react-modal";
 import { useUiContext } from "@/lib/context";
 import { ImageSvg } from "@/components/icons";
 const Modal = ({}: any) => {
-  const { setIsModal, modalIsOpen } = useUiContext();
+  const { closeModal, modalIsOpen } = useUiContext();
 
   return (
     <ReactModal
@@ -12,6 +12,13 @@ const Modal = ({}: any) => {
       contentLabel="Example Modal"
     >
       <div className="flex min-h-screen  items-center justify-center px-4 pt-4 pb-20 text-center">
+        <div className=" opacity-0" onClick={closeModal}>
+          <div
+            id="headlessui-dialog-overlay-31"
+            aria-hidden="true"
+            className="fixed inset-0 bg-gray-100 transition-opacity"
+          ></div>
+        </div>
         <div className="z-[100] inline-block w-full transform overflow-hidden rounded-xl border bg-white text-left align-bottom shadow-lg transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle">
           <div className="p-6">
             <label tabIndex={0}>
@@ -20,15 +27,15 @@ const Modal = ({}: any) => {
                   <div className="undefined false duration-100">
                     <div className="flex flex-col items-center gap-2 text-center text-gray-700">
                       <ImageSvg />
-                      <p>Upload an image</p>{" "}
+                      <p>Upload an image</p>
                       <p className="text-sm text-gray-500">
                         Max file size: 5MB, accepted: jpeg, jpg, png, gif
                       </p>
                     </div>
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center opacity-0">
-                    <div className="text-primary-base scale-110">
-                      {/* <svg
+                    <div className="scale-110 text-purple-600">
+                      <svg
                         id="dots"
                         width="32px"
                         viewBox="0 0 132 58"
@@ -73,7 +80,7 @@ const Modal = ({}: any) => {
                             ></circle>
                           </g>
                         </g>
-                      </svg> */}
+                      </svg>
                     </div>
                   </div>
                 </div>

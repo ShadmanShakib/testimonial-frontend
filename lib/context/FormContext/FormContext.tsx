@@ -1,8 +1,9 @@
 import React, { useReducer, useMemo, createContext, useCallback } from "react";
 import { State, Action, ProviderProps } from "./types";
 const InitialState: State = {
-  backgroundColor: "",
-  primaryColor: "",
+  backgroundColor: "#ffffff ",
+  primaryColor: "#3b10b1",
+  logoUrl: "",
 };
 const FormContext = createContext<State | any>(InitialState);
 const formReducer = (state: State, action: Action) => {
@@ -24,7 +25,10 @@ export function FormContextProvider(props: ProviderProps) {
   const setPrimaryColor = useCallback((payload: string) => {
     dispatch({ type: "SET_PRIMARY_COLOR", payload: payload });
   }, []);
-  const value = { ...state, setBgColor, setPrimaryColor };
+  const setLogoUrl = (payload: string) => {
+    dispatch({ type: "SET_LOGO_URL", payload: payload });
+  };
+  const value = { ...state, setBgColor, setPrimaryColor, setLogoUrl };
   return (
     <FormContext.Provider value={value}>{props.children}</FormContext.Provider>
   );

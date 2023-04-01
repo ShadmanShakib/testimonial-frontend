@@ -6,7 +6,10 @@ export default function UiProvider(props: any) {
   const setIsModal = () => {
     dispatch({ type: "TOGGLE_IMAGE_MODAL" });
   };
-  const value = { ...state, setIsModal };
+  const closeModal = () => {
+    dispatch({ type: "CLOSE_MODAL" });
+  };
+  const value = { ...state, setIsModal, closeModal };
   return (
     <UiContext.Provider value={value}>{props.children}</UiContext.Provider>
   );

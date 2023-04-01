@@ -9,4 +9,7 @@ export type Action =
     }
   | {
       type: "TOGGLE_IMAGE_MODAL";
+    }
+  | {
+      type: "CLOSE_MODAL";
     };

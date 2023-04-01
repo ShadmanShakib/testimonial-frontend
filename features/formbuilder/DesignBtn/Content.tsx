@@ -5,7 +5,7 @@ import { useUiContext } from "@/lib/context";
 function Content() {
   const { backgroundColor, setBgColor, primaryColor, setPrimaryColor } =
     useFormContext();
-  const { modalIsOpen, setIsModal } = useUiContext();
+  const { setIsModal } = useUiContext();
   return (
     <div className="py-4">
       <div className="flex flex-col gap-4">
@@ -50,7 +50,8 @@ function Content() {
               <input
                 type="text"
                 className="w-full border-none focus:ring-0 "
-                placeholder={primaryColor}
+                defaultValue={primaryColor}
+                placeholder="#3b10b1"
                 value={primaryColor}
                 name=""
                 id=""
