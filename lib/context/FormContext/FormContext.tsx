@@ -3,7 +3,7 @@ import { State, Action, ProviderProps } from "./types";
 const InitialState: State = {
   backgroundColor: "#ffffff ",
   primaryColor: "#3b10b1",
-  logoUrl: "",
+  logo: null,
 };
 const FormContext = createContext<State | any>(InitialState);
 const formReducer = (state: State, action: Action) => {
@@ -12,6 +12,8 @@ const formReducer = (state: State, action: Action) => {
       return { ...state, backgroundColor: action.payload };
     case "SET_PRIMARY_COLOR":
       return { ...state, primaryColor: action.payload };
+    case "SET_LOGO":
+      return { ...state, logo: action.payload };
     default:
       return { ...state };
   }
@@ -25,10 +27,10 @@ export function FormContextProvider(props: ProviderProps) {
   const setPrimaryColor = useCallback((payload: string) => {
     dispatch({ type: "SET_PRIMARY_COLOR", payload: payload });
   }, []);
-  const setLogoUrl = (payload: string) => {
-    dispatch({ type: "SET_LOGO_URL", payload: payload });
+  const setLogo = (payload: File | null) => {
+    dispatch({ type: "SET_LOGO", payload: payload });
   };
-  const value = { ...state, setBgColor, setPrimaryColor, setLogoUrl };
+  const value = { ...state, setBgColor, setPrimaryColor, setLogo };
   return (
     <FormContext.Provider value={value}>{props.children}</FormContext.Provider>
   );

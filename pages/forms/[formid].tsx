@@ -1,13 +1,18 @@
 import React from "react";
 import { EditorSidebar, Preview } from "@/features/formbuilder";
 import { Modal } from "@/components/ui";
-import { useUiContext } from "@/lib/context";
+import { useFormContext, useUiContext } from "@/lib/context";
 export default function FormId() {
-  const { setIsModal, modalIsOpen } = useUiContext();
+  const { closeModal, modalIsOpen } = useUiContext();
+  const { setLogo } = useFormContext();
 
   return (
     <div className="flex h-full w-full">
-      <Modal />
+      <Modal
+        setLogo={setLogo}
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+      />
       <EditorSidebar />
       <Preview />
     </div>

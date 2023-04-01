@@ -4,7 +4,7 @@ export interface ProviderProps {
   children: React.ReactNode;
 }
 export interface State {
-  logoUrl?: string;
+  logo?: string | null;
   backgroundColor: string;
 
   primaryColor: string;
@@ -20,6 +20,6 @@ export type Action =
       payload: string;
     }
   | {
-      type: "SET_LOGO_URL";
-      payload: string;
+      type: "SET_LOGO";
+      payload: File | null;
     };

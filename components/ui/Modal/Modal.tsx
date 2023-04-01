@@ -1,9 +1,22 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import ReactModal from "react-modal";
-import { useUiContext } from "@/lib/context";
 import { ImageSvg } from "@/components/icons";
-const Modal = ({}: any) => {
-  const { closeModal, modalIsOpen } = useUiContext();
+import { IModal } from "./IModal";
+const Modal = (props: IModal) => {
+  const { closeModal, modalIsOpen, setLogo } = props;
+  const handleChnage = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setLogo(reader.result as string);
+      };
+    } else {
+      setLogo(null);
+    }
+  };
 
   return (
     <ReactModal
@@ -86,6 +99,7 @@ const Modal = ({}: any) => {
                 </div>
               </div>
               <input
+                onChange={handleChnage}
                 className="hidden"
                 type="file"
                 accept="image/png,image/jpg,image/gif,image/jpeg,image/webp"
