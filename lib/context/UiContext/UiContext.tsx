@@ -13,6 +13,8 @@ export const UiReducer = (state: State, action: Action) => {
       return { ...state };
     case "TOGGLE_IMAGE_MODAL":
       return { ...state, modalIsOpen: !state.modalIsOpen };
+    case "CLOSE_MODAL":
+      return { ...state, modalIsOpen: false };
     default:
       return { ...state };
   }
