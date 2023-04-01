@@ -17,3 +17,4 @@ export { default as VideoSvg } from "./VideoSvg";
 export { default as PenSvg } from "./PenSvg";
 export { default as StarSvg } from "./StarSvg";
 export { default as QuestionMarkSvg } from "./QuestionMarkSvg";
+export { default as ImageSvg } from "./ImageSvg";

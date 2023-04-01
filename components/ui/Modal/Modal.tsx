@@ -1,37 +1,93 @@
 import React from "react";
+import ReactModal from "react-modal";
+import { useUiContext } from "@/lib/context";
+import { ImageSvg } from "@/components/icons";
+const Modal = ({}: any) => {
+  const { setIsModal, modalIsOpen } = useUiContext();
 
-const Modal = ({ onClose, children }: any) => {
   return (
-    <div className="fixed inset-0 z-10 overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-        <div className="w-full max-w-lg transform overflow-hidden rounded-lg bg-white shadow-xl transition-all">
-          <div className="px-6 py-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-medium text-gray-900">Modal Title</h3>
-              <button
-                className="text-gray-500 hover:text-gray-700 focus:text-gray-700 focus:outline-none"
-                onClick={onClose}
-              >
-                <span className="sr-only">Close modal</span>
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-              </button>
-            </div>
-            <div className="mt-4">{children}</div>
+    <ReactModal
+      className="inset-0 z-[99] overflow-y-auto"
+      isOpen={modalIsOpen}
+      contentLabel="Example Modal"
+    >
+      <div className="flex min-h-screen  items-center justify-center px-4 pt-4 pb-20 text-center">
+        <div className="z-[100] inline-block w-full transform overflow-hidden rounded-xl border bg-white text-left align-bottom shadow-lg transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle">
+          <div className="p-6">
+            <label tabIndex={0}>
+              <div className="flex w-full cursor-pointer justify-center rounded-md border-2 border-dashed border-gray-200 px-8 py-24 duration-150 hover:scale-[1.02] hover:border-purple-500">
+                <div className="relative flex items-center justify-center ">
+                  <div className="undefined false duration-100">
+                    <div className="flex flex-col items-center gap-2 text-center text-gray-700">
+                      <ImageSvg />
+                      <p>Upload an image</p>{" "}
+                      <p className="text-sm text-gray-500">
+                        Max file size: 5MB, accepted: jpeg, jpg, png, gif
+                      </p>
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0">
+                    <div className="text-primary-base scale-110">
+                      {/* <svg
+                        id="dots"
+                        width="32px"
+                        viewBox="0 0 132 58"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
+                        className="svelte-1tolfw7"
+                      >
+                        <defs></defs>
+                        <g
+                          id="Page-1"
+                          stroke="none"
+                          stroke-width="1"
+                          fill="none"
+                          fill-rule="evenodd"
+                        >
+                          <g
+                            id="dots"
+                            fill="currentColor"
+                            className="svelte-1tolfw7"
+                          >
+                            <circle
+                              id="dot1"
+                              cx="25"
+                              cy="30"
+                              r="13"
+                              className="svelte-1tolfw7"
+                            ></circle>
+                            <circle
+                              id="dot2"
+                              cx="65"
+                              cy="30"
+                              r="13"
+                              className="svelte-1tolfw7"
+                            ></circle>
+                            <circle
+                              id="dot3"
+                              cx="105"
+                              cy="30"
+                              r="13"
+                              className="svelte-1tolfw7"
+                            ></circle>
+                          </g>
+                        </g>
+                      </svg> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <input
+                className="hidden"
+                type="file"
+                accept="image/png,image/jpg,image/gif,image/jpeg,image/webp"
+              />
+            </label>
           </div>
         </div>
       </div>
-    </div>
+    </ReactModal>
   );
 };
 
