@@ -5,7 +5,7 @@ import { useUiContext } from "@/lib/context";
 function Content() {
   const { backgroundColor, setBgColor, primaryColor, setPrimaryColor } =
     useFormContext();
-  const { isImageModal, setIsModal } = useUiContext();
+  const { modalIsOpen, setIsModal } = useUiContext();
   return (
     <div className="py-4">
       <div className="flex flex-col gap-4">

@@ -1,6 +1,6 @@
 export interface State {
   isDesign: boolean;
-  isImageModal: boolean;
+  modalIsOpen: boolean;
 }
 
 export type Action =

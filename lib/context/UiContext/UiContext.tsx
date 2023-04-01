@@ -3,7 +3,7 @@ import { State, Action } from "./UiTypes";
 
 export const InitialState: State = {
   isDesign: false,
-  isImageModal: false,
+  modalIsOpen: false,
 };
 const UiContext = React.createContext<State | any>(InitialState);
 
@@ -12,7 +12,7 @@ export const UiReducer = (state: State, action: Action) => {
     case "TOGGLE_ISDESIGN":
       return { ...state };
     case "TOGGLE_IMAGE_MODAL":
-      return { ...state, isImageModal: !state.isImageModal };
+      return { ...state, modalIsOpen: !state.modalIsOpen };
     default:
       return { ...state };
   }
