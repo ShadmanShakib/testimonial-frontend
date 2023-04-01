@@ -18,4 +18,8 @@ export type Action =
   | {
       type: "SET_PRIMARY_COLOR";
       payload: string;
+    }
+  | {
+      type: "SET_LOGO_URL";
+      payload: string;
     };
