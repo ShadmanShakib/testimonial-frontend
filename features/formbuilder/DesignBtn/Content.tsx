@@ -3,19 +3,25 @@ import { useFormContext } from "@/lib/context";
 import Image from "next/image";
 import { useUiContext } from "@/lib/context";
 function Content() {
-  const { backgroundColor, setBgColor, primaryColor, setPrimaryColor } =
+  const { backgroundColor, setBgColor, primaryColor, setPrimaryColor, logo } =
     useFormContext();
   const { setIsModal } = useUiContext();
+
   return (
     <div className="py-4">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col items-start gap-4">
         <h1>Logo</h1>
         <button
           onClick={() => setIsModal()}
           className="mt-2 text-left duration-100 hover:opacity-80"
         >
           <div className="flex h-20 w-48 min-w-[156px] flex-col items-center justify-center rounded-md border bg-white px-4 py-2">
-            <Image width={100} height={40} alt="" src="/next.svg" />
+            <Image
+              width={100}
+              height={40}
+              alt=""
+              src={logo ? logo : "/next.svg"}
+            />
           </div>
         </button>
       </div>
