@@ -6,8 +6,9 @@ export interface ProviderProps {
 export interface State {
   logo?: string | null;
   backgroundColor: string;
-
+  title: string;
   primaryColor: string;
+  message: string;
 }
 
 export type Action =
@@ -21,5 +22,13 @@ export type Action =
     }
   | {
       type: "SET_LOGO";
-      payload: File | null;
+      payload: string | null;
+    }
+  | {
+      type: "SET_TITLE";
+      payload: string;
+    }
+  | {
+      type: "SET_MESSAGE";
+      payload: string;
     };

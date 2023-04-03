@@ -4,8 +4,8 @@ import { useTestimonidal } from "@/lib/context/Testimonial";
 import { useFormContext } from "@/lib/context";
 import Image from "next/image";
 function PreviewCard() {
-  const { primaryColor, logo } = useFormContext();
-  const { title, message } = useTestimonidal();
+  const { primaryColor, logo, title, message } = useFormContext();
+
   return (
     <div className="relative w-full max-w-lg shadow-md">
       <div className="showdow-xl flex flex-col justify-items-stretch rounded-xl bg-white px-2 py-4">
