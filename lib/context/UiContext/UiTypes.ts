@@ -1,11 +1,26 @@
 export interface State {
-  isDesign: boolean;
+  sidebarIsExpanded:
+    | "design"
+    | "welcome"
+    | "response"
+    | "attribute"
+    | "thankyou"
+    | "advanced"
+    | null;
   modalIsOpen: boolean;
 }
 
 export type Action =
   | {
-      type: "TOGGLE_ISDESIGN";
+      type: "SET_SIDEBAR_ISEXPANDED";
+      payload:
+        | "design"
+        | "welcome"
+        | "response"
+        | "attribute"
+        | "thankyou"
+        | "advanced"
+        | null;
     }
   | {
       type: "TOGGLE_IMAGE_MODAL";
