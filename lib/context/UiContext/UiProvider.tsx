@@ -9,6 +9,10 @@ export default function UiProvider(props: any) {
   const closeModal = () => {
     dispatch({ type: "CLOSE_MODAL" });
   };
+  //expand sidebar
+  const setSidebarExpand = (payload: any) => {
+    dispatch({ type: "SET_SIDEBAR_ISEXPANDED", payload: payload });
+  };
   const value = { ...state, setIsModal, closeModal };
   return (
     <UiContext.Provider value={value}>{props.children}</UiContext.Provider>
