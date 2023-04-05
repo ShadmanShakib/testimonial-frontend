@@ -2,9 +2,18 @@ import React from "react";
 import ExpandBtn from "../ExpandBtn";
 import { WelcomeSvg } from "@/components/icons";
 import WelcomeEditor from "./WelcomeEditor";
+import { useUiContext } from "@/lib/context";
 function Welcome() {
-  const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
+  const { sidebarIsExpanded, setSidebarExpand } = useUiContext();
+  const show = sidebarIsExpanded === "welcome";
+  const handleClick = () => {
+    if (show) {
+      setSidebarExpand(null);
+    } else {
+      setSidebarExpand("welcome");
+    }
+  };
+
   return (
     <div>
       <ExpandBtn
