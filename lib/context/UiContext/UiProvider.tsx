@@ -10,10 +10,19 @@ export default function UiProvider(props: any) {
     dispatch({ type: "CLOSE_MODAL" });
   };
   //expand sidebar
-  const setSidebarExpand = (payload: any) => {
+  const setSidebarExpand = (
+    payload:
+      | "design"
+      | "welcome"
+      | "response"
+      | "attribute"
+      | "thankyou"
+      | "advanced"
+      | null
+  ) => {
     dispatch({ type: "SET_SIDEBAR_ISEXPANDED", payload: payload });
   };
-  const value = { ...state, setIsModal, closeModal };
+  const value = { ...state, setIsModal, closeModal, setSidebarExpand };
   return (
     <UiContext.Provider value={value}>{props.children}</UiContext.Provider>
   );

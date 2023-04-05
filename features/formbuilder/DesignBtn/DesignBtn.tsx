@@ -2,13 +2,23 @@ import React from "react";
 import { DownSvg, DesignSvg } from "@/components/icons";
 import Content from "./Content";
 import ExpandBtn from "../ExpandBtn";
+import { useUiContext } from "@/lib/context";
 function DesignBtn() {
-  const [show, setShow] = React.useState(false);
+  const { sidebarIsExpanded, setSidebarExpand } = useUiContext();
+  const show = sidebarIsExpanded === "design";
+  const handleClick = () => {
+    const show = sidebarIsExpanded === "design";
+    if (show) {
+      setSidebarExpand(null);
+    } else {
+      setSidebarExpand("design");
+    }
+  };
   return (
     <div className="">
       <ExpandBtn
-        handleClick={() => setShow(!show)}
-        show={show}
+        handleClick={handleClick}
+        show={sidebarIsExpanded === "design"}
         title="Design"
         icon={<DesignSvg />}
       />
