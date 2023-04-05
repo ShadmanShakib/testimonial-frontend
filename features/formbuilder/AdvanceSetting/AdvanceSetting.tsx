@@ -2,13 +2,22 @@ import { AdvanceSvg } from "@/components/icons";
 import { Switch } from "@/components/ui";
 import React from "react";
 import ExpandBtn from "../ExpandBtn";
+import { useUiContext } from "@/lib/context";
 
 function AdvanceSetting() {
-  const [show, setShow] = React.useState(false);
+  const { sidebarIsExpanded, setSidebarExpand } = useUiContext();
+  const show = sidebarIsExpanded === "advance";
+  const handleClick = () => {
+    if (show) {
+      setSidebarExpand(null);
+    } else {
+      setSidebarExpand("advance");
+    }
+  };
   return (
     <div>
       <ExpandBtn
-        handleClick={() => setShow(!show)}
+        handleClick={handleClick}
         title="Advanced"
         icon={<AdvanceSvg />}
         show={show}
