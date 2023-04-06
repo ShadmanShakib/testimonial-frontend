@@ -2,6 +2,7 @@ import ThanksSvg from "@/components/icons/ThanksSvg";
 import React from "react";
 import ExpandBtn from "../ExpandBtn";
 import { useUiContext } from "@/lib/context";
+import ThankExpanded from "./ThankExpanded";
 function TnxEditor() {
   const { setSidebarExpand, sidebarIsExpanded } = useUiContext();
   const show = sidebarIsExpanded === "thanks";
@@ -21,6 +22,7 @@ function TnxEditor() {
         icon={<ThanksSvg />}
         show={show}
       />
+      {show && <ThankExpanded />}
     </div>
   );
 }
