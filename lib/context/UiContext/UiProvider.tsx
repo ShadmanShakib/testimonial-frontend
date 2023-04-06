@@ -20,7 +20,7 @@ export default function UiProvider(props: any) {
       | "advanced"
       | null
   ) => {
-    dispatch({ type: "SET_SIDEBAR_ISEXPANDED", payload: payload });
+    dispatch({ type: "SET_SIDEBAR_ISACTIVE", payload: payload });
   };
   const value = { ...state, setIsModal, closeModal, setSidebarExpand };
   return (

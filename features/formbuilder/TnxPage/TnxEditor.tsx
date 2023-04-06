@@ -4,8 +4,8 @@ import ExpandBtn from "../ExpandBtn";
 import { useUiContext } from "@/lib/context";
 import ThankExpanded from "./ThankExpanded";
 function TnxEditor() {
-  const { setSidebarExpand, sidebarIsExpanded } = useUiContext();
-  const show = sidebarIsExpanded === "thanks";
+  const { setSidebarExpand, sidebarIsActive } = useUiContext();
+  const show = sidebarIsActive === "thanks";
   const handleClick = () => {
     if (show) {
       setSidebarExpand(null);

@@ -4,8 +4,8 @@ import { WelcomeSvg } from "@/components/icons";
 import WelcomeEditor from "./WelcomeEditor";
 import { useUiContext } from "@/lib/context";
 function Welcome() {
-  const { sidebarIsExpanded, setSidebarExpand } = useUiContext();
-  const show = sidebarIsExpanded === "welcome";
+  const { sidebarIsActive, setSidebarExpand } = useUiContext();
+  const show = sidebarIsActive === "welcome";
   const handleClick = () => {
     if (show) {
       setSidebarExpand(null);

@@ -5,8 +5,8 @@ import ExpandBtn from "../ExpandBtn";
 import { useUiContext } from "@/lib/context";
 
 function AdvanceSetting() {
-  const { sidebarIsExpanded, setSidebarExpand } = useUiContext();
-  const show = sidebarIsExpanded === "advance";
+  const { sidebarIsActive, setSidebarExpand } = useUiContext();
+  const show = sidebarIsActive === "advance";
   const handleClick = () => {
     if (show) {
       setSidebarExpand(null);

@@ -1,5 +1,5 @@
 export interface State {
-  sidebarIsExpanded:
+  sidebarIsActive:
     | "design"
     | "welcome"
     | "response"
@@ -12,7 +12,7 @@ export interface State {
 
 export type Action =
   | {
-      type: "SET_SIDEBAR_ISEXPANDED";
+      type: "SET_SIDEBAR_ISACTIVE";
       payload:
         | "design"
         | "welcome"

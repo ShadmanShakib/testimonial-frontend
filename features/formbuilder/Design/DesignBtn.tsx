@@ -4,10 +4,10 @@ import Content from "./Content";
 import ExpandBtn from "../ExpandBtn";
 import { useUiContext } from "@/lib/context";
 function DesignBtn() {
-  const { sidebarIsExpanded, setSidebarExpand } = useUiContext();
-  const show = sidebarIsExpanded === "design";
+  const { sidebarIsActive, setSidebarExpand } = useUiContext();
+  const show = sidebarIsActive === "design";
   const handleClick = () => {
-    const show = sidebarIsExpanded === "design";
+    const show = sidebarIsActive === "design";
     if (show) {
       setSidebarExpand(null);
     } else {
@@ -18,7 +18,7 @@ function DesignBtn() {
     <div className="">
       <ExpandBtn
         handleClick={handleClick}
-        show={sidebarIsExpanded === "design"}
+        show={sidebarIsActive === "design"}
         title="Design"
         icon={<DesignSvg />}
       />

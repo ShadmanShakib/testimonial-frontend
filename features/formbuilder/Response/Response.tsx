@@ -5,8 +5,8 @@ import ResponseEditor from "./ResponseEditor";
 import { useUiContext } from "@/lib/context";
 
 function Response() {
-  const { sidebarIsExpanded, setSidebarExpand } = useUiContext();
-  const show = sidebarIsExpanded === "response";
+  const { sidebarIsActive, setSidebarExpand } = useUiContext();
+  const show = sidebarIsActive === "response";
   const handleClick = () => {
     if (show) {
       setSidebarExpand(null);

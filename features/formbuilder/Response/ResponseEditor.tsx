@@ -22,8 +22,18 @@ function PreviewEditor() {
             className="focus:border-primary mt-2 block h-40 w-full appearance-none rounded-md border-gray-300 py-2.5 text-sm shadow-sm focus:ring-purple-600"
           ></textarea>
         </div>
-        <Checkbox label="Collect Ratings" />
-        <Checkbox label="Collect Image Attachments" />
+        <Checkbox
+          checked={false}
+          id="collectRating"
+          onChange={() => {}}
+          label="Collect Ratings"
+        />
+        <Checkbox
+          id="imageattachment"
+          checked={false}
+          onChange={() => {}}
+          label="Collect Image Attachments"
+        />
       </div>
     </div>
   );
