@@ -1,24 +1,39 @@
 import React from "react";
 
-export default function Checkbox(props: ICheckbox) {
+interface CheckboxProps {
+  label: string;
+  id: string;
+  checked: boolean;
+  onChange: (isChecked: boolean) => void;
+}
+
+const Checkbox: React.FC<CheckboxProps> = ({
+  label,
+  id,
+  checked,
+  onChange,
+}) => {
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = event.target.checked;
+    onChange(isChecked);
+  };
+
   return (
     <div className="flex items-center gap-2 ">
       <input
-        checked={props.checked}
         type="checkbox"
-        className="block flex-none appearance-none rounded-md border-gray-300 bg-contain bg-center bg-no-repeat text-sm shadow-sm checked:bg-purple-600 hover:checked:bg-purple-400 focus:outline-none focus:ring-0 focus:ring-transparent checked:focus:bg-purple-400 disabled:cursor-not-allowed"
+        className="checked:bg-primary checked:focus:bg-primary-400 hover:checked:bg-primary-400 block flex-none appearance-none rounded-md border-gray-300 bg-contain bg-center bg-no-repeat text-sm shadow-sm focus:outline-none focus:ring-0 focus:ring-transparent disabled:cursor-not-allowed"
+        id={id}
+        checked={checked}
+        onChange={handleCheckboxChange}
       />
       <div className="flex-grow">
-        <label className="block text-sm font-medium text-gray-800">
-          <div className="flex items-center gap-2">
-            {props.label} <div></div>
-          </div>
-        </label>
+        <div className="block text-sm font-medium text-gray-800">
+          <div className="flex items-center gap-2">{label}</div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
-interface ICheckbox extends Partial<HTMLInputElement> {
-  label: string;
-}
+export default Checkbox;
