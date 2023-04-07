@@ -1,5 +1,5 @@
 export interface State {
-  sidebarIsExpanded:
+  sidebarIsActive:
     | "design"
     | "welcome"
     | "response"
@@ -8,11 +8,12 @@ export interface State {
     | "advanced"
     | null;
   modalIsOpen: boolean;
+  activePreview: "default" | "response" | "attribute" | "thanks";
 }
 
 export type Action =
   | {
-      type: "SET_SIDEBAR_ISEXPANDED";
+      type: "SET_SIDEBAR_ISACTIVE";
       payload:
         | "design"
         | "welcome"
@@ -27,4 +28,8 @@ export type Action =
     }
   | {
       type: "CLOSE_MODAL";
+    }
+  | {
+      type: "SET_ACTIVE_PREVIEW";
+      payload: "default" | "response" | "attribute" | "thanks";
     };

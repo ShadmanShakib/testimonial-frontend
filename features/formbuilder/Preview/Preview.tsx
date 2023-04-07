@@ -1,7 +1,9 @@
 import React from "react";
 import { LaptopSvg, PhoneSvg } from "@/components/icons";
-import PreviewBox from "./PreviewBox";
+import PreviewComponent from "./PreviewComponent";
+import { useFormContext } from "@/lib/context";
 function Preview() {
+  const { backgroundColor } = useFormContext();
   return (
     <div className="h-screen flex-grow bg-gray-200 md:block">
       <div className="flex items-center justify-center">
@@ -14,7 +16,7 @@ function Preview() {
           </button>
         </div>
       </div>
-      <PreviewBox />
+      <PreviewComponent backgroundColor={backgroundColor} />
     </div>
   );
 }

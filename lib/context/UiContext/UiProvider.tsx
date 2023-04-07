@@ -1,5 +1,5 @@
 import UiContext from "./UiContext";
-import React from "react";
+import React, { useCallback } from "react";
 import { UiReducer, InitialState } from "./UiContext";
 export default function UiProvider(props: any) {
   const [state, dispatch] = React.useReducer(UiReducer, InitialState);
@@ -10,7 +10,7 @@ export default function UiProvider(props: any) {
     dispatch({ type: "CLOSE_MODAL" });
   };
   //expand sidebar
-  const setSidebarExpand = (
+  const setSidebarIsActive = (
     payload:
       | "design"
       | "welcome"
@@ -20,9 +20,21 @@ export default function UiProvider(props: any) {
       | "advanced"
       | null
   ) => {
-    dispatch({ type: "SET_SIDEBAR_ISEXPANDED", payload: payload });
+    dispatch({ type: "SET_SIDEBAR_ISACTIVE", payload: payload });
   };
-  const value = { ...state, setIsModal, closeModal, setSidebarExpand };
+  const setActivePreview = useCallback(
+    (payload: "default" | "response" | "attribute" | "thanks") => {
+      dispatch({ type: "SET_ACTIVE_PREVIEW", payload: payload });
+    },
+    []
+  );
+  const value = {
+    ...state,
+    setIsModal,
+    closeModal,
+    setSidebarIsActive,
+    setActivePreview,
+  };
   return (
     <UiContext.Provider value={value}>{props.children}</UiContext.Provider>
   );

@@ -5,13 +5,15 @@ import ResponseEditor from "./ResponseEditor";
 import { useUiContext } from "@/lib/context";
 
 function Response() {
-  const { sidebarIsExpanded, setSidebarExpand } = useUiContext();
-  const show = sidebarIsExpanded === "response";
+  const { sidebarIsActive, setSidebarIsActive, setActivePreview } =
+    useUiContext();
+  const show = sidebarIsActive === "response";
   const handleClick = () => {
     if (show) {
-      setSidebarExpand(null);
+      setSidebarIsActive(null);
     } else {
-      setSidebarExpand("response");
+      setSidebarIsActive("response");
+      setActivePreview("response");
     }
   };
   return (

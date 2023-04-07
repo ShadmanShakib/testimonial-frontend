@@ -2,9 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { VideoSvg, PenSvg } from "@/components/icons";
 import { useFormContext, useUiContext } from "@/lib/context";
-function PreviewCard() {
+function DesignPreview() {
   const { primaryColor, logo, title, message } = useFormContext();
-  const { sidebarIsActive } = useUiContext();
   return (
     <div className="relative w-full max-w-lg shadow-md">
       <div className="showdow-xl flex flex-col justify-items-stretch rounded-xl bg-white px-2 py-4">
@@ -37,4 +36,4 @@ function PreviewCard() {
   );
 }
 
-export default PreviewCard;
+export default DesignPreview;

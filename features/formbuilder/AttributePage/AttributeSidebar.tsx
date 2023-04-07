@@ -4,13 +4,15 @@ import { AttributeSvg } from "@/components/icons";
 import { useUiContext } from "@/lib/context";
 import AttributeExpanded from "./AttributeExpanded";
 function AttributeSidebar() {
-  const { sidebarIsExpanded, setSidebarExpand } = useUiContext();
-  const show = sidebarIsExpanded === "attribute";
+  const { sidebarIsActive, setSidebarIsActive, setActivePreview } =
+    useUiContext();
+  const show = sidebarIsActive === "attribute";
   const handleClick = () => {
     if (show) {
-      setSidebarExpand(null);
+      setSidebarIsActive(null);
     } else {
-      setSidebarExpand("attribute");
+      setSidebarIsActive("attribute");
+      setActivePreview("attribute");
     }
   };
 

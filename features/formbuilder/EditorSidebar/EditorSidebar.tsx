@@ -1,5 +1,5 @@
 import React from "react";
-import DesignBtn from "../DesignBtn";
+import DesignBtn from "../Design";
 import { Welcome, Response, AdvanceSetting } from "@/features/formbuilder";
 import { AttributeSidebar } from "../AttributePage";
 import BackBtn from "./BackBtn";
