@@ -8,6 +8,7 @@ export interface State {
     | "advanced"
     | null;
   modalIsOpen: boolean;
+  activePreview: "default" | "response" | "attribute" | "thanks";
 }
 
 export type Action =
@@ -27,4 +28,8 @@ export type Action =
     }
   | {
       type: "CLOSE_MODAL";
+    }
+  | {
+      type: "SET_ACTIVE_PREVIEW";
+      payload: "default" | "response" | "attribute" | "thanks";
     };

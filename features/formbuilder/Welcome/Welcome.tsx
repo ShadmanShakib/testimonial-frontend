@@ -4,13 +4,15 @@ import { WelcomeSvg } from "@/components/icons";
 import WelcomeEditor from "./WelcomeEditor";
 import { useUiContext } from "@/lib/context";
 function Welcome() {
-  const { sidebarIsActive, setSidebarExpand } = useUiContext();
+  const { sidebarIsActive, setSidebarIsActive, setActivePreview } =
+    useUiContext();
   const show = sidebarIsActive === "welcome";
   const handleClick = () => {
     if (show) {
-      setSidebarExpand(null);
+      setSidebarIsActive(null);
     } else {
-      setSidebarExpand("welcome");
+      setSidebarIsActive("welcome");
+      setActivePreview("default");
     }
   };
 
