@@ -1,7 +1,8 @@
 import Head from "next/head";
-import { Header } from "@/components/common";
 import { Inter } from "@next/font/google";
+import { Header } from "@/components/common";
 import styles from "@/styles/Home.module.css";
+import { Hero, Swiper, Getstarted, Features } from "@/components/home";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,10 @@ export default function Home() {
       </Head>
       <main className="">
         <Header />
-        <div className={styles.description}>How are you?</div>
+        <Hero />
+        <Swiper />
+        <Features />
+        <Getstarted />
       </main>
     </>
   );
