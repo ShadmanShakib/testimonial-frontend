@@ -1,9 +1,10 @@
 import React from "react";
-import { SignInForm } from "@/components/auth";
+import { SignInForm, Login } from "@/components/auth";
 import { signinasync } from "@/utils/services/auth";
 import { Header } from "@/components/common";
 import { useEffect } from "react";
 import Router from "next/router";
+
 function SignIn() {
   const accessToken = sessionStorage.getItem("access_token");
   useEffect(() => {
@@ -18,7 +19,8 @@ function SignIn() {
         <h1 className="py-10 text-center text-3xl font-semibold text-slate-100">
           Welcome back
         </h1>
-        <SignInForm signinasync={signinasync} />
+        {/* <SignInForm signinasync={signinasync} /> */}
+        <Login />
       </main>
     </div>
   );
