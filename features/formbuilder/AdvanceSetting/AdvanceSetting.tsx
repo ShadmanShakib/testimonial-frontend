@@ -6,12 +6,12 @@ import { useUiContext } from "@/lib/context";
 
 function AdvanceSetting() {
   const { sidebarIsActive, setSidebarIsActive } = useUiContext();
-  const show = sidebarIsActive === "advance";
+  const show = sidebarIsActive === "advanced";
   const handleClick = () => {
     if (show) {
       setSidebarIsActive(null);
     } else {
-      setSidebarIsActive("advance");
+      setSidebarIsActive("advanced");
     }
   };
   return (

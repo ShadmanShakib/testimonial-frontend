@@ -3,14 +3,13 @@ import React, { useState } from "react";
 interface SwitchProps {
   label: string;
   onChange: (isChecked: boolean) => void;
+  isChecked: boolean;
 }
 
-const Switch: React.FC<SwitchProps> = ({ label, onChange }) => {
-  const [isChecked, setIsChecked] = useState(false);
-
+const Switch: React.FC<SwitchProps> = ({ label, onChange, isChecked }) => {
   const handleSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;
-    setIsChecked(isChecked);
+
     onChange(isChecked);
   };
 
