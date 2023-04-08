@@ -35,7 +35,7 @@ export default function PreviewBox({ backgroundColor }: PreviewBoxProps) {
         style={{ backgroundColor }}
         className="flex h-[90%] w-full flex-none flex-col  overflow-hidden rounded-md shadow-xl  ring-4 ring-gray-800"
       >
-        <div className="flex h-full flex-col items-center justify-center  px-4 pt-12 pb-8">
+        <div className="flex h-full flex-col items-center justify-center overflow-y-scroll  px-4 pt-12 pb-8">
           {previewComponent}
         </div>
       </div>
