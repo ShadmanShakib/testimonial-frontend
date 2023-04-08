@@ -6,6 +6,7 @@ import AttributeExpanded from "./AttributeExpanded";
 function AttributeSidebar() {
   const { sidebarIsActive, setSidebarIsActive, setActivePreview } =
     useUiContext();
+
   const show = sidebarIsActive === "attribute";
   const handleClick = () => {
     if (show) {

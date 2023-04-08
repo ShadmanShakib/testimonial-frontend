@@ -1,41 +1,67 @@
+import React, { useReducer, useMemo } from "react";
 import UiContext from "./UiContext";
-import React, { useCallback } from "react";
-import { UiReducer, InitialState } from "./UiContext";
-export default function UiProvider(props: any) {
-  const [state, dispatch] = React.useReducer(UiReducer, InitialState);
-  const setIsModal = () => {
-    dispatch({ type: "TOGGLE_IMAGE_MODAL" });
+import {
+  default as UiContextReducer,
+  UiContextState,
+  initialUiContextState,
+} from "./UiReducer";
+
+type UiContextProps = {
+  children: React.ReactNode;
+};
+
+export type UiContextType = UiContextState & {
+  setSidebarIsActive: React.Dispatch<React.SetStateAction<string | null>>;
+  setActivePreview: React.Dispatch<React.SetStateAction<string>>;
+  askForEmailHandler: () => void;
+  askForHeadlineHandler: () => void;
+  askForWebsiteHandler: () => void;
+  askForAvatarHandler: () => void;
+};
+
+const UiContextProvider = ({ children }: UiContextProps) => {
+  const [state, dispatch] = useReducer(UiContextReducer, initialUiContextState);
+
+  const setSidebarIsActive = (value: any | null) => {
+    dispatch({ type: "SET_SIDEBAR_IS_ACTIVE", payload: value });
   };
-  const closeModal = () => {
-    dispatch({ type: "CLOSE_MODAL" });
+
+  const setActivePreview = (value: any) => {
+    dispatch({ type: "SET_ACTIVE_PREVIEW", payload: value });
   };
-  //expand sidebar
-  const setSidebarIsActive = (
-    payload:
-      | "design"
-      | "welcome"
-      | "response"
-      | "attribute"
-      | "thankyou"
-      | "advanced"
-      | null
-  ) => {
-    dispatch({ type: "SET_SIDEBAR_ISACTIVE", payload: payload });
+
+  const askForEmailHandler = () => {
+    dispatch({ type: "TOGGLE_ASK_FOR_EMAIL" });
   };
-  const setActivePreview = useCallback(
-    (payload: "default" | "response" | "attribute" | "thanks") => {
-      dispatch({ type: "SET_ACTIVE_PREVIEW", payload: payload });
-    },
-    []
+
+  const askForHeadlineHandler = () => {
+    dispatch({ type: "TOGGLE_ASK_FOR_HEADLINE" });
+  };
+
+  const askForWebsiteHandler = () => {
+    dispatch({ type: "TOGGLE_ASK_FOR_WEBSITE" });
+  };
+
+  const askForAvatarHandler = () => {
+    dispatch({ type: "TOGGLE_ASK_FOR_AVATAR" });
+  };
+
+  const uiContextValue = useMemo<UiContextType>(
+    () => ({
+      ...state,
+      setSidebarIsActive,
+      setActivePreview,
+      askForEmailHandler,
+      askForHeadlineHandler,
+      askForWebsiteHandler,
+      askForAvatarHandler,
+    }),
+    [state]
   );
-  const value = {
-    ...state,
-    setIsModal,
-    closeModal,
-    setSidebarIsActive,
-    setActivePreview,
-  };
+
   return (
-    <UiContext.Provider value={value}>{props.children}</UiContext.Provider>
+    <UiContext.Provider value={uiContextValue}>{children}</UiContext.Provider>
   );
-}
+};
+
+export default UiContextProvider;
