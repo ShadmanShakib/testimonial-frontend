@@ -6,12 +6,12 @@ import { useUiContext } from "@/lib/context";
 
 function AdvanceSetting() {
   const { sidebarIsActive, setSidebarIsActive } = useUiContext();
-  const show = sidebarIsActive === "advance";
+  const show = sidebarIsActive === "advanced";
   const handleClick = () => {
     if (show) {
       setSidebarIsActive(null);
     } else {
-      setSidebarIsActive("advance");
+      setSidebarIsActive("advanced");
     }
   };
   return (
@@ -23,9 +23,12 @@ function AdvanceSetting() {
         show={show}
       />
       {show && (
-        <div>
-          <Switch label="Auto approve testimonials" />
-          <Switch label="Prefer Landscape Recording on Mobile" />
+        <div className="py-4">
+          <div className="flex flex-col gap-2">
+            <Switch label="Auto approve testimonials" />
+            <Switch label="Prefer Landscape Recording on Mobile" />
+          </div>
+          <hr className="my-4"></hr>
         </div>
       )}
     </div>

@@ -3,10 +3,10 @@ import { Button, Rating } from "@/components/ui";
 import ImageUploader from "./ImageUploader";
 function ResponsePreview() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white px-4 pt-12 pb-8 shadow-md ">
+    <div className="flex flex-col   rounded-md bg-white px-4 pt-12 pb-8 shadow-md ">
       <div className="relative max-w-lg">
         <div className="relative flex w-full justify-items-stretch">
-          <form action="flex flex-col w-full items-center ">
+          <form className="flex w-full flex-col   ">
             <h1 className="text-lg font-medium">Write a text testimonial</h1>
             <div className="content mt-4">
               <ul>
@@ -23,6 +23,7 @@ function ResponsePreview() {
               rows={7}
             ></textarea>
             <ImageUploader onImageSelect={() => {}} />
+
             <Button variant="primary" title="Submit" />
           </form>
         </div>
