@@ -7,7 +7,15 @@ module.exports = {
     "./features/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        brand: "#1db954",
+        black: "#191414",
+        grey: "#B3B3B3",
+        dark: "#282828",
+        veryDark: "#121212",
+      },
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };
