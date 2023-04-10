@@ -6,15 +6,8 @@ import { useEffect } from "react";
 import Router from "next/router";
 
 function SignIn() {
-  const accessToken = sessionStorage.getItem("access_token");
-  useEffect(() => {
-    if (accessToken) {
-      Router.push("/app/");
-    }
-  }, [accessToken]);
   return (
     <div className="h-full min-h-screen bg-slate-900">
-      <Header />
       <main>
         <h1 className="py-10 text-center text-3xl font-semibold text-slate-100">
           Welcome back
