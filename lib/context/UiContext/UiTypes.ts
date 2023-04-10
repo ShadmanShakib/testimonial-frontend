@@ -1,20 +1,3 @@
-export interface State {
-  sidebarIsActive:
-    | "design"
-    | "welcome"
-    | "response"
-    | "attribute"
-    | "thankyou"
-    | "advanced"
-    | null;
-  modalIsOpen: boolean;
-  activePreview: "default" | "response" | "attribute" | "thanks";
-  askForEmail: boolean;
-  askForHeadline: boolean;
-  askForWebsite: boolean;
-  askForAvator: boolean;
-}
-
 export type Action =
   | {
       type: "SET_SIDEBAR_ISACTIVE";

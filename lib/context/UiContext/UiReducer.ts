@@ -35,7 +35,7 @@ export type Action =
         | "advanced"
         | null;
     }
-  | { type: "SET_MODAL_IS_OPEN"; payload: boolean }
+  | { type: "SET_MODAL_IS_OPEN" }
   | {
       type: "SET_ACTIVE_PREVIEW";
       payload: "default" | "response" | "attribute" | "thanks";
@@ -53,7 +53,7 @@ function UiContextReducer(
     case "SET_SIDEBAR_IS_ACTIVE":
       return { ...state, sidebarIsActive: action.payload };
     case "SET_MODAL_IS_OPEN":
-      return { ...state, modalIsOpen: action.payload };
+      return { ...state, modalIsOpen: !state.modalIsOpen };
     case "SET_ACTIVE_PREVIEW":
       return { ...state, activePreview: action.payload };
     case "TOGGLE_ASK_FOR_EMAIL":

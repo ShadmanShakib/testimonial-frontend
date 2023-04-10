@@ -5,14 +5,14 @@ import { useUiContext } from "@/lib/context";
 function Content() {
   const { backgroundColor, setBgColor, primaryColor, setPrimaryColor, logo } =
     useFormContext();
-  const { setIsModal } = useUiContext();
+  const { modalIsOpen, toggleModalHandler } = useUiContext();
 
   return (
     <div className="py-4">
       <div className="flex flex-col items-start gap-4">
         <h1>Logo</h1>
         <button
-          onClick={() => setIsModal()}
+          onClick={toggleModalHandler}
           className="mt-2 text-left duration-100 hover:opacity-80"
         >
           <div className="flex h-20 w-48 min-w-[156px] flex-col items-center justify-center rounded-md border bg-white px-4 py-2">
@@ -35,7 +35,7 @@ function Content() {
                 <div></div>
               </div>
             </div>
-            {/* Input */}
+
             <div className=" mt-2 flex items-center rounded-md border bg-white px-2 duration-100 focus-within:border-purple-600 focus-within:ring-4 focus-within:ring-purple-600/10">
               <div className="relative">
                 <button
@@ -49,6 +49,7 @@ function Content() {
                     tabIndex={-1}
                     type="color"
                     className="h-6 w-6 opacity-0"
+                    defaultValue={backgroundColor}
                   />
                 </div>
               </div>
@@ -58,7 +59,6 @@ function Content() {
                 className="w-full border-none focus:ring-0 "
                 defaultValue={primaryColor}
                 placeholder="#3b10b1"
-                value={primaryColor}
                 name=""
                 id=""
                 onChange={(e) => setBgColor(e.target.value)}
@@ -97,7 +97,7 @@ function Content() {
               placeholder="#4e46e5"
               name=""
               id=""
-              value={backgroundColor}
+              defaultValue={backgroundColor}
             />
           </div>
         </div>

@@ -1,15 +1,13 @@
-import { useState } from "react";
 import { useLoginApi } from "@/utils/services/auth";
 import { useForm } from "react-hook-form";
-
+import Image from "next/image";
+import { loginApi } from "@/utils/services/auth";
 interface LoginFormValues {
   username: string;
   password: string;
 }
 
 export default function Login() {
-  const { login, isLoading, error } = useLoginApi();
-
   const {
     register,
     handleSubmit,
@@ -17,22 +15,39 @@ export default function Login() {
   } = useForm<LoginFormValues>();
 
   const onSubmit = async (data: LoginFormValues) => {
-    await login({ username: data.username, password: data.password });
+    await loginApi({ username: data.username, password: data.password });
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-300">
+    <div className="flex  items-center justify-center ">
       <div className="rounded-md bg-white p-6 shadow-md">
-        <h1 className="mb-4 text-2xl font-medium">Login</h1>
-        {error && <p className="mb-4 text-red-500">{error.message}</p>}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mb-4">
-            <label
-              htmlFor="username"
-              className="mb-2 block font-medium text-gray-700"
-            >
-              Username:
-            </label>
+        <button className="relative mb-2 flex w-full  items-center rounded-sm border border-gray-100 bg-gray-50 py-2 px-0 text-white hover:bg-gray-300">
+          <Image
+            src="/images/google.png"
+            alt="google"
+            height={100}
+            width={100}
+            className="mx-4 h-5 w-5 object-contain"
+          />
+          <span
+            className="mr-4 flex h-6 items-center border-r border-slate-400"
+            aria-hidden="true"
+          ></span>
+          <span className="-ml-16 flex-auto pl-16 pr-8 text-gray-900">
+            Sign in with Google
+          </span>
+        </button>
+        {/* {error && <p className="mb-4 text-red-500">{error.message}</p>} */}
+        <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-4 ">
+            <div className="flex ">
+              <label
+                htmlFor="username"
+                className="mb-2 block font-medium text-gray-700"
+              >
+                Username:
+              </label>
+            </div>
             <input
               type="text"
               id="username"
@@ -57,7 +72,7 @@ export default function Login() {
             <input
               type="password"
               id="password"
-              className={`w-full rounded-md border-2 border-gray-300 p-2 ${
+              className={`w-full rounded-md py-2 px-3 text-gray-600 outline-none focus:ring-0 dark:text-gray-800 ${
                 errors.password ? "border-red-500" : ""
               }`}
               {...register("password", {
@@ -70,10 +85,9 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            className="rounded-md bg-blue-500 py-2 px-4 text-white"
-            disabled={isLoading}
+            className="rounded-md bg-brand py-2 px-4 text-white"
           >
-            {isLoading ? "Logging in..." : "Login"}
+            {"Login"}
           </button>
         </form>
       </div>

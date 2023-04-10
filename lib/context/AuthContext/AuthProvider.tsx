@@ -12,8 +12,17 @@ const AuthProvider: React.FC<any> = ({ children }) => {
       router.push("/login");
     }
   }, [router]);
+  const logOut = () => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      localStorage.removeItem("access_token");
+      router.push("/login");
+    }
+  };
   return (
-    <AuthContext.Provider value={{ token }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ token, logOut }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

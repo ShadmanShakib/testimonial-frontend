@@ -17,6 +17,7 @@ export type UiContextType = UiContextState & {
   askForHeadlineHandler: () => void;
   askForWebsiteHandler: () => void;
   askForAvatarHandler: () => void;
+  toggleModalHandler: () => void;
 };
 
 const UiContextProvider = ({ children }: UiContextProps) => {
@@ -25,7 +26,9 @@ const UiContextProvider = ({ children }: UiContextProps) => {
   const setSidebarIsActive = (value: any | null) => {
     dispatch({ type: "SET_SIDEBAR_IS_ACTIVE", payload: value });
   };
-
+  const toggleModalHandler = () => {
+    dispatch({ type: "SET_MODAL_IS_OPEN" });
+  };
   const setActivePreview = (value: any) => {
     dispatch({ type: "SET_ACTIVE_PREVIEW", payload: value });
   };
@@ -55,6 +58,7 @@ const UiContextProvider = ({ children }: UiContextProps) => {
       askForHeadlineHandler,
       askForWebsiteHandler,
       askForAvatarHandler,
+      toggleModalHandler,
     }),
     [state]
   );
