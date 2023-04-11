@@ -18,6 +18,7 @@ export type UiContextType = UiContextState & {
   askForWebsiteHandler: () => void;
   askForAvatarHandler: () => void;
   toggleModalHandler: () => void;
+  closeModal: any;
 };
 
 const UiContextProvider = ({ children }: UiContextProps) => {
@@ -26,6 +27,9 @@ const UiContextProvider = ({ children }: UiContextProps) => {
   const setSidebarIsActive = (value: any | null) => {
     dispatch({ type: "SET_SIDEBAR_IS_ACTIVE", payload: value });
   };
+  const closeModal = useMemo(() => {
+    dispatch({ type: "CLOSE_MODAL" });
+  }, []);
   const toggleModalHandler = () => {
     dispatch({ type: "SET_MODAL_IS_OPEN" });
   };
@@ -59,6 +63,7 @@ const UiContextProvider = ({ children }: UiContextProps) => {
       askForWebsiteHandler,
       askForAvatarHandler,
       toggleModalHandler,
+      closeModal,
     }),
     [state]
   );
