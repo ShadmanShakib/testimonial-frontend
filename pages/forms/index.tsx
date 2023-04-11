@@ -5,9 +5,8 @@ import { Header, FormList } from "@/features/formbuilder";
 function Forms() {
   return (
     <main className="flex">
-      <div>
-        <Sidebar />
-      </div>
+      <Sidebar />
+
       <div className="relative h-full flex-grow pt-8 pb-16 sm:pt-10">
         <div className="relative px-6">
           <Header />

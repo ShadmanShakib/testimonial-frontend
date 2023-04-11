@@ -64,12 +64,12 @@ function SearchBox() {
               x2="152"
               y2="176"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="16"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="16"
             ></line>
           </svg>
-        </button>{" "}
+        </button>
       </div>
     </div>
   );

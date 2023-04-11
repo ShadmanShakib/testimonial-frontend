@@ -9,7 +9,7 @@ import {
   TagIcon,
   TeamIcon,
 } from "@/components/icons";
-import Link from "next/link";
+
 export default function Sidebar() {
   return (
     <aside className="hidden min-h-screen w-64 flex-none sm:block">

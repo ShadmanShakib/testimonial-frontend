@@ -37,6 +37,9 @@ export type Action =
     }
   | { type: "SET_MODAL_IS_OPEN" }
   | {
+      type: "CLOSE_MODAL";
+    }
+  | {
       type: "SET_ACTIVE_PREVIEW";
       payload: "default" | "response" | "attribute" | "thanks";
     }
