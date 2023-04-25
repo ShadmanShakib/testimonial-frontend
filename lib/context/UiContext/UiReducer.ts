@@ -7,6 +7,7 @@ export type UiContextState = {
     | "thankyou"
     | "advanced"
     | null;
+  isAccountDropDown: boolean;
   modalIsOpen: boolean;
   activePreview: "default" | "response" | "attribute" | "thanks";
   askForEmail: boolean;
@@ -22,6 +23,7 @@ export const initialUiContextState: UiContextState = {
   askForHeadline: true,
   askForWebsite: true,
   askForAvatar: true,
+  isAccountDropDown: false,
 };
 export type Action =
   | {
@@ -46,7 +48,10 @@ export type Action =
   | { type: "TOGGLE_ASK_FOR_EMAIL" }
   | { type: "TOGGLE_ASK_FOR_HEADLINE" }
   | { type: "TOGGLE_ASK_FOR_WEBSITE" }
-  | { type: "TOGGLE_ASK_FOR_AVATAR" };
+  | { type: "TOGGLE_ASK_FOR_AVATAR" }
+  | {
+      type: "TOGGLE_ACCOUNT_DROPDOWN";
+    };
 
 function UiContextReducer(
   state: UiContextState,
@@ -55,6 +60,8 @@ function UiContextReducer(
   switch (action.type) {
     case "SET_SIDEBAR_IS_ACTIVE":
       return { ...state, sidebarIsActive: action.payload };
+    case "TOGGLE_ACCOUNT_DROPDOWN":
+      return { ...state, isAccountDropDown: !state.isAccountDropDown };
     case "SET_MODAL_IS_OPEN":
       return { ...state, modalIsOpen: !state.modalIsOpen };
     case "SET_ACTIVE_PREVIEW":

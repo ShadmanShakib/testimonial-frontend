@@ -18,6 +18,7 @@ export type UiContextType = UiContextState & {
   askForWebsiteHandler: () => void;
   askForAvatarHandler: () => void;
   toggleModalHandler: () => void;
+  toggleAccountDropDown: () => void;
   closeModal: any;
 };
 
@@ -52,10 +53,14 @@ const UiContextProvider = ({ children }: UiContextProps) => {
   const askForAvatarHandler = () => {
     dispatch({ type: "TOGGLE_ASK_FOR_AVATAR" });
   };
+  const toggleAccountDropDown = () => {
+    dispatch({ type: "TOGGLE_ACCOUNT_DROPDOWN" });
+  };
 
   const uiContextValue = useMemo<UiContextType>(
     () => ({
       ...state,
+      toggleAccountDropDown,
       setSidebarIsActive,
       setActivePreview,
       askForEmailHandler,

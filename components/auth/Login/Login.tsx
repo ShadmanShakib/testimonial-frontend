@@ -1,21 +1,24 @@
-import { useLoginApi } from "@/utils/services/auth";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
-import { loginApi } from "@/utils/services/auth";
+import { useRouter } from "next/router";
 interface LoginFormValues {
   username: string;
   password: string;
 }
 
-export default function Login() {
+export default function Login({ loginApi }: any) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormValues>();
-
+  const router = useRouter();
   const onSubmit = async (data: LoginFormValues) => {
     await loginApi({ username: data.username, password: data.password });
+    const access_token = localStorage.getItem("access_token");
+    if (access_token) {
+      router.push("/app");
+    }
   };
 
   return (
