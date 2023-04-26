@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-export default function Item() {
+import { IFormItem } from "./type";
+export default function Item(props: IFormItem) {
   return (
     <Link href="/forms/faas">
       <div className="flex items-center">
@@ -28,7 +29,7 @@ export default function Item() {
           </svg>
         </div>
         <div className=" ml-4">
-          <div className="text-lg font-medium">Notion Testimonial Form</div>
+          <div className="text-lg font-medium">{props.title}</div>
           <div className="flex items-center gap-1 truncate">
             0 responses. Created on Feb 4, 2023
           </div>

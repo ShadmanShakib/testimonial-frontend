@@ -12,7 +12,7 @@ import {
 import { useUiContext } from "@/lib/context";
 import AccountDropDown from "./AccountDropDown";
 import { logOut } from "@/utils/services/auth";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 export default function Sidebar() {
   const { isAccountDropDown, toggleAccountDropDown } = useUiContext();
   const router = useRouter();
