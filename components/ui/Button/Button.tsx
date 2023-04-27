@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
-import IButton from "./type";
-function Button(props: IButton) {
+import { ButtonProps } from "./type";
+function Button(props: ButtonProps) {
   return (
     <button
       type="submit"

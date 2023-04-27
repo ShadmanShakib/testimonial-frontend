@@ -14,6 +14,7 @@ export type UiContextState = {
   askForHeadline: boolean;
   askForWebsite: boolean;
   askForAvatar: boolean;
+  isCreateFormDialog: boolean;
 };
 export const initialUiContextState: UiContextState = {
   sidebarIsActive: null,
@@ -24,6 +25,7 @@ export const initialUiContextState: UiContextState = {
   askForWebsite: true,
   askForAvatar: true,
   isAccountDropDown: false,
+  isCreateFormDialog: false,
 };
 export type Action =
   | {
@@ -51,6 +53,12 @@ export type Action =
   | { type: "TOGGLE_ASK_FOR_AVATAR" }
   | {
       type: "TOGGLE_ACCOUNT_DROPDOWN";
+    }
+  | {
+      type: "OPEN_CREATE_FORM_DIALOG";
+    }
+  | {
+      type: "CLOSE_CREATE_FORM_DIALOG";
     };
 
 function UiContextReducer(
@@ -74,6 +82,10 @@ function UiContextReducer(
       return { ...state, askForWebsite: !state.askForWebsite };
     case "TOGGLE_ASK_FOR_AVATAR":
       return { ...state, askForAvatar: !state.askForAvatar };
+    case "OPEN_CREATE_FORM_DIALOG":
+      return { ...state, isCreateFormDialog: true };
+    case "CLOSE_CREATE_FORM_DIALOG":
+      return { ...state, isCreateFormDialog: false };
     default:
       return state;
   }

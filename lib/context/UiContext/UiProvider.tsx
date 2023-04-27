@@ -1,4 +1,4 @@
-import React, { useReducer, useMemo } from "react";
+import React, { useReducer, useMemo, useCallback } from "react";
 import UiContext from "./UiContext";
 import {
   default as UiContextReducer,
@@ -19,6 +19,8 @@ export type UiContextType = UiContextState & {
   askForAvatarHandler: () => void;
   toggleModalHandler: () => void;
   toggleAccountDropDown: () => void;
+  openCreateFormDialog: () => void;
+  closeCreateFormDialog: () => void;
   closeModal: any;
 };
 
@@ -56,6 +58,14 @@ const UiContextProvider = ({ children }: UiContextProps) => {
   const toggleAccountDropDown = () => {
     dispatch({ type: "TOGGLE_ACCOUNT_DROPDOWN" });
   };
+  //open create form dialog
+  const openCreateFormDialog = useCallback(() => {
+    dispatch({ type: "OPEN_CREATE_FORM_DIALOG" });
+  }, []);
+  //colse create form dialog
+  const closeCreateFormDialog = useCallback(() => {
+    dispatch({ type: "CLOSE_CREATE_FORM_DIALOG" });
+  }, []);
 
   const uiContextValue = useMemo<UiContextType>(
     () => ({
@@ -69,6 +79,8 @@ const UiContextProvider = ({ children }: UiContextProps) => {
       askForAvatarHandler,
       toggleModalHandler,
       closeModal,
+      openCreateFormDialog,
+      closeCreateFormDialog,
     }),
     [state]
   );
