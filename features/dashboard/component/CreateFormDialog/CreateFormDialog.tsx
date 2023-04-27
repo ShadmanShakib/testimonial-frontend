@@ -14,6 +14,7 @@ function CreateFormDialog(props: ICreateFormDialog) {
     console.log(data);
   };
   const { open, setOpen } = props;
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Portal>
@@ -43,7 +44,7 @@ function CreateFormDialog(props: ICreateFormDialog) {
               className="mt-4 flex flex-col gap-4"
             >
               <label htmlFor="name">Name</label>
-              <input {...register("name", { required: true })} />
+              <Input register={register} name="name" required type="text" />
 
               <Button title="Submit" variant="primary" type="submit" />
             </form>
