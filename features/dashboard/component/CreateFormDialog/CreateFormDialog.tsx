@@ -30,20 +30,23 @@ function CreateFormDialog(props: ICreateFormDialog) {
                   Create a form
                 </h4>
               </div>
-              <button
-                type="button"
-                className="-mt-1 rounded-md p-1 text-gray-500 hover:bg-zinc-50"
-                tabIndex={0}
-              >
-                <Cross2Icon />
-              </button>
+              {/* close button */}
+              <Dialog.Close asChild>
+                <button
+                  type="button"
+                  className="-mt-1 rounded-md p-1 text-gray-500 hover:bg-zinc-50"
+                  tabIndex={0}
+                >
+                  <Cross2Icon />
+                </button>
+              </Dialog.Close>
             </div>
             {/* form here   */}
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="mt-4 flex flex-col gap-4"
             >
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Form Name</label>
               <Input register={register} name="name" required type="text" />
 
               <Button title="Submit" variant="primary" type="submit" />

@@ -3,14 +3,14 @@ import Link from "next/link";
 import { IFormItem } from "./type";
 export default function Item(props: IFormItem) {
   return (
-    <Link href="/forms/faas">
-      <div className="flex items-center">
-        <div className="flex items-center gap-2">
-          <input
-            className="appearance-none rounded-md bg-center checked:bg-purple-600 focus:outline-none focus:ring-0 checked:focus:bg-purple-600"
-            type="checkbox"
-          />
-        </div>
+    <div className="flex items-center">
+      <div className="flex items-center gap-2">
+        <input
+          className="mr-4 appearance-none  rounded-md bg-center checked:bg-purple-600 focus:outline-none focus:ring-0 checked:focus:bg-purple-600"
+          type="checkbox"
+        />
+      </div>
+      <Link className="flex items-center" href="/forms/faas">
         <div className="rounded-md border bg-white px-0.5 py-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ export default function Item(props: IFormItem) {
             0 responses. Created on Feb 4, 2023
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
