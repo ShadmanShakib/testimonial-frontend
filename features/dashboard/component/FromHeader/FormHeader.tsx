@@ -1,6 +1,6 @@
 import React from "react";
 import { IFormHeader } from "./types";
-
+import { PlusIcon } from "@radix-ui/react-icons";
 export default function FormHeader(props: IFormHeader) {
   return (
     <div className="flex  items-center gap-2 ">
@@ -10,21 +10,7 @@ export default function FormHeader(props: IFormHeader) {
           onClick={props.onCreateNew}
           className="flex items-center overflow-hidden rounded bg-purple-600 p-2 text-white "
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            fill="none"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className=""
-          >
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
+          <PlusIcon color="white" className="fill-current text-white" />
           <span className="ml-1">Create new</span>
         </button>
       </div>

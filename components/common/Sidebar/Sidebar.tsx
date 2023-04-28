@@ -57,7 +57,7 @@ export default function Sidebar() {
             <SidebarBtn href="/app/search" title="Search">
               <SearchIcon />
             </SidebarBtn>
-            <SidebarBtn href="/app/tags" title="Tags">
+            <SidebarBtn href="/tags" title="Tags">
               <TagIcon />
             </SidebarBtn>
             <SidebarBtn href="/app/team" title="Team">
