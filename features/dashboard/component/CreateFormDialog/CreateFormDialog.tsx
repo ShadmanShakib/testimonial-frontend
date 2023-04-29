@@ -1,17 +1,25 @@
 import React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { ICreateFormDialog } from "./types";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { ICreateFormDialog, formData } from "./types";
 import { Button, Input } from "@/components/ui";
-import { useForm } from "react-hook-form";
+import { createNewForm } from "@/features/formbuilder/services";
+
 function CreateFormDialog(props: ICreateFormDialog) {
   const {
     register,
     handleSubmit,
+
     formState: { errors },
-  } = useForm();
-  const onSubmit = (data: any) => {
-    console.log(data);
+  } = useForm<formData>();
+  const onSubmit: SubmitHandler<formData> = async (data) => {
+    const postData = {
+      values: {
+        name: data.name,
+      },
+    };
+    createNewForm(postData);
   };
   const { open, setOpen } = props;
 
