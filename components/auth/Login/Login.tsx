@@ -51,19 +51,7 @@ export default function Login({ loginApi }: any) {
                 Username:
               </label>
             </div>
-            <input
-              type="text"
-              id="username"
-              className={`w-full rounded-md border-2 border-gray-300 p-2 ${
-                errors.username ? "border-red-500" : ""
-              }`}
-              {...register("username", {
-                required: "Username is required",
-              })}
-            />
-            {errors.username && (
-              <p className="mt-2 text-red-500">{errors.username.message}</p>
-            )}
+            <input type="text" {...register("username")} />
           </div>
           <div className="mb-4">
             <label
@@ -72,19 +60,7 @@ export default function Login({ loginApi }: any) {
             >
               Password:
             </label>
-            <input
-              type="password"
-              id="password"
-              className={`w-full rounded-md py-2 px-3 text-gray-600 outline-none focus:ring-0 dark:text-gray-800 ${
-                errors.password ? "border-red-500" : ""
-              }`}
-              {...register("password", {
-                required: "Password is required",
-              })}
-            />
-            {errors.password && (
-              <p className="mt-2 text-red-500">{errors.password.message}</p>
-            )}
+            <input type="password" {...register("password")} />
           </div>
           <button
             type="submit"
