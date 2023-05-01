@@ -1,7 +1,10 @@
 import React, { use } from "react";
 import { Sidebar } from "@/components/common";
-// import { FormList } from "@/features/formbuilder";
-import { CreateFormDialog, FormHeader } from "@/features/dashboard/component";
+import {
+  CreateFormDialog,
+  DashHeader,
+  DeleteFromDialog,
+} from "@/features/dashboard/component";
 import { useGetAllFroms } from "@/features/formbuilder/services";
 import { useUiContext } from "@/lib/context";
 import { FormList } from "@/features/dashboard/component";
@@ -23,7 +26,11 @@ function Forms() {
       <Sidebar />
       <div className="relative h-full flex-grow pt-8 pb-16 sm:pt-10">
         <div className="relative px-6">
-          <FormHeader onCreateNew={openCreateFormDialog} />
+          <DashHeader
+            title="Your Forms"
+            description="Use forms to collect testimonials from your users."
+            onCreateNew={openCreateFormDialog}
+          />
         </div>
         {isLoading ? (
           <div>Loading...</div>
@@ -39,6 +46,7 @@ function Forms() {
         open={isCreateFormDialog}
         setOpen={setIsCreateFormDialog}
       />
+      <DeleteFromDialog />
     </main>
   );
 }

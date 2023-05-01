@@ -1,6 +1,7 @@
 import React from "react";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { DashHeaderProps } from "./types";
+import { Button } from "@ui/button";
 
 function DashHeader(props: DashHeaderProps) {
   return (
@@ -10,14 +11,10 @@ function DashHeader(props: DashHeaderProps) {
           <h1 className="text-xl font-semibold">{props.title}</h1>
           <h4>{props.description}</h4>
         </div>
-        <button
-          onClick={props.onCreateNew}
-          className="flex items-center overflow-hidden rounded bg-purple-600 p-2 text-white "
-        >
-          <PlusIcon height={18} width={18} />
-
-          <span className="ml-1">Create new</span>
-        </button>
+        <Button onClick={props.onCreateNew}>
+          <PlusIcon className=" h-4 w-4" color="white" height={18} width={18} />
+          <div className="ml-2"> Create new</div>
+        </Button>
       </div>
     </header>
   );

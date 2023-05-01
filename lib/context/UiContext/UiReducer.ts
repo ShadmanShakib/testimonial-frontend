@@ -15,6 +15,7 @@ export type UiContextState = {
   askForWebsite: boolean;
   askForAvatar: boolean;
   isCreateFormDialog: boolean;
+  isDeleleFormDialog: boolean;
 };
 export const initialUiContextState: UiContextState = {
   sidebarIsActive: null,
@@ -26,6 +27,7 @@ export const initialUiContextState: UiContextState = {
   askForAvatar: true,
   isAccountDropDown: false,
   isCreateFormDialog: false,
+  isDeleleFormDialog: false,
 };
 export type Action =
   | {
@@ -59,6 +61,9 @@ export type Action =
     }
   | {
       type: "CLOSE_CREATE_FORM_DIALOG";
+    }
+  | {
+      type: "SET_DELETE_FORM_DIALOG";
     };
 
 function UiContextReducer(
@@ -86,6 +91,8 @@ function UiContextReducer(
       return { ...state, isCreateFormDialog: true };
     case "CLOSE_CREATE_FORM_DIALOG":
       return { ...state, isCreateFormDialog: false };
+    case "SET_DELETE_FORM_DIALOG":
+      return { ...state, isDeleleFormDialog: !state.isDeleleFormDialog };
     default:
       return state;
   }
