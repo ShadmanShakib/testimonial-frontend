@@ -7,4 +7,5 @@ export interface IForm {
 
 export interface FormListProps {
   form: IForm[];
+  onDeleteForm: () => void;
 }

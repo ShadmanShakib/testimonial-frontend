@@ -1,5 +1,4 @@
 import React from "react";
-import { Cross2Icon } from "@radix-ui/react-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ICreateFormDialog, formData } from "./types";
 import { Input } from "@/components/ui";

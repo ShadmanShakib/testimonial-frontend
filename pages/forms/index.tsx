@@ -15,8 +15,13 @@ function Forms() {
   const { isLoading, error, data } = useGetAllFroms();
 
   //Ui context
-  const { isCreateFormDialog, openCreateFormDialog, closeCreateFormDialog } =
-    useUiContext();
+  const {
+    isCreateFormDialog,
+    openCreateFormDialog,
+    closeCreateFormDialog,
+    setDeleteFormDialog,
+    isDeleleFormDialog,
+  } = useUiContext();
   const setIsCreateFormDialog = () => {
     isCreateFormDialog ? closeCreateFormDialog() : openCreateFormDialog();
   };
@@ -38,7 +43,7 @@ function Forms() {
           <div>Something went wrong</div>
         ) : (
           <div className="mt-4 flex flex-col gap-1">
-            <FormList form={data} />;
+            <FormList onDeleteForm={setDeleteFormDialog} form={data} />;
           </div>
         )}
       </div>
@@ -46,7 +51,10 @@ function Forms() {
         open={isCreateFormDialog}
         setOpen={setIsCreateFormDialog}
       />
-      <DeleteFromDialog />
+      <DeleteFromDialog
+        open={isDeleleFormDialog}
+        setOpen={setDeleteFormDialog}
+      />
     </main>
   );
 }

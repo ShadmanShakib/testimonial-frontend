@@ -9,9 +9,10 @@ import {
 import { Button } from "@ui/button";
 interface CardProps {
   name: string;
+  onDeleteForm: () => void;
 }
 function Card(props: CardProps) {
-  const { name } = props;
+  const { name, onDeleteForm } = props;
   return (
     <div className="block rounded-lg hover:bg-gray-50">
       <div className="group flex items-center gap-4 px-4 py-2.5 ">
@@ -62,7 +63,7 @@ function Card(props: CardProps) {
           <Button size="xm" variant="ghost">
             <CopyIcon height={18} width={18} />
           </Button>
-          <Button size="xm" variant="ghost">
+          <Button onClick={onDeleteForm} size="xm" variant="ghost">
             <TrashIcon
               fill="currentColor"
               className="text-red-500"
