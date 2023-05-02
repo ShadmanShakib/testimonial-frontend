@@ -6,11 +6,13 @@ import {
   TrashIcon,
   Pencil2Icon,
 } from "@radix-ui/react-icons";
+import { Button } from "@ui/button";
 interface CardProps {
   name: string;
+  onDeleteForm: () => void;
 }
 function Card(props: CardProps) {
-  const { name } = props;
+  const { name, onDeleteForm } = props;
   return (
     <div className="block rounded-lg hover:bg-gray-50">
       <div className="group flex items-center gap-4 px-4 py-2.5 ">
@@ -19,7 +21,7 @@ function Card(props: CardProps) {
             name=""
             id=""
             type="checkbox"
-            className="hover:checked:bg-primary-400 block flex-none appearance-none rounded-md border-gray-300 bg-contain bg-center bg-no-repeat text-sm shadow-sm checked:bg-brand focus:outline-none focus:ring-0 focus:ring-transparent checked:focus:bg-brand disabled:cursor-not-allowed"
+            className="hover:checked:bg-primary-400 checked:bg-brand checked:focus:bg-brand block flex-none appearance-none rounded-md border-gray-300 bg-contain bg-center bg-no-repeat text-sm shadow-sm focus:outline-none focus:ring-0 focus:ring-transparent disabled:cursor-not-allowed"
           />
         </div>
         <Link
@@ -51,24 +53,24 @@ function Card(props: CardProps) {
           </div>
         </Link>
         {/* hidden icon buttons show on hover */}
-        <div className="hidden  items-center text-gray-500 group-hover:flex">
-          <button className="rounded-md p-1.5 hover:bg-gray-100">
+        <div className="hidden items-center text-gray-500 group-hover:flex">
+          <Button size="xm" variant="ghost">
             <Link2Icon height={18} width={18} />
-          </button>
-          <button className="rounded-md p-1.5 hover:bg-gray-100">
+          </Button>
+          <Button size="xm" variant="ghost">
             <Pencil2Icon height={18} width={18} />
-          </button>
-          <button className="rounded-md p-1.5 hover:bg-gray-100">
+          </Button>
+          <Button size="xm" variant="ghost">
             <CopyIcon height={18} width={18} />
-          </button>
-          <button className="rounded-md p-1.5 hover:bg-gray-100">
+          </Button>
+          <Button onClick={onDeleteForm} size="xm" variant="ghost">
             <TrashIcon
               fill="currentColor"
               className="text-red-500"
               height={18}
               width={18}
             />
-          </button>
+          </Button>
         </div>
       </div>
     </div>

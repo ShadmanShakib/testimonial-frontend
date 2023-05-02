@@ -1,6 +1,7 @@
 import React from "react";
 import { Sidebar } from "@/components/common";
-import { Title, SearchBox, Button, Table } from "@/components/ui";
+import { Title, SearchBox, Table } from "@/components/ui";
+import { Button } from "@/components/ui/button";
 function Dashboard() {
   return (
     <div className="flex">
@@ -38,7 +39,7 @@ function Dashboard() {
         </div>
         <div className="flex gap-6">
           <SearchBox />
-          <Button title="Search" variant="primary" />
+          <Button>Search</Button>
         </div>
         <Table />
       </div>
