@@ -13,9 +13,10 @@ interface DeleteFormDialogProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onDelete: () => void;
+  isLoading?: boolean;
 }
 function DeleteFormDialog(props: DeleteFormDialogProps) {
-  const { open, setOpen, onDelete } = props;
+  const { open, setOpen, onDelete, isLoading } = props;
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
@@ -31,7 +32,7 @@ function DeleteFormDialog(props: DeleteFormDialogProps) {
           </Button>
 
           <Button onClick={onDelete} variant="destructive">
-            Delete
+            {isLoading ? "Loading..." : "Delete"}
           </Button>
         </div>
       </DialogContent>

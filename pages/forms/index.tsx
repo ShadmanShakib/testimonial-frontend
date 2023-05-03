@@ -25,7 +25,7 @@ function Forms() {
     deleteFormId,
   } = useUiContext();
   const { isLoading, error, data } = useGetAllFroms();
-  const { mutate } = useDeleteForm(deleteFormId);
+  const deleteForm = useDeleteForm(deleteFormId);
 
   const setIsCreateFormDialog = () => {
     isCreateFormDialog ? closeCreateFormDialog() : openCreateFormDialog();
@@ -57,7 +57,8 @@ function Forms() {
         setOpen={setIsCreateFormDialog}
       />
       <DeleteFromDialog
-        onDelete={() => mutate()}
+        onDelete={() => deleteForm.mutate()}
+        isLoading={deleteForm.isLoading}
         open={isDeleteFormDialog}
         setOpen={setDeleteFormDialog}
       />
