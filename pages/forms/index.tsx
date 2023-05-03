@@ -8,7 +8,6 @@ import {
 } from "@/features/dashboard/component";
 //services
 import { useGetAllFroms } from "@/features/formbuilder/services";
-import { deleteForm } from "@/features/dashboard/services";
 import { useDeleteForm } from "@/features/dashboard/hooks";
 
 import { useUiContext } from "@/lib/context";
