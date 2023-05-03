@@ -12,12 +12,12 @@ import { Button } from "@ui/button";
 interface DeleteFormDialogProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onDelete: () => void;
 }
 function DeleteFormDialog(props: DeleteFormDialogProps) {
-  const { open, setOpen } = props;
+  const { open, setOpen, onDelete } = props;
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger>Open</DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Delete Form</DialogTitle>
@@ -30,7 +30,9 @@ function DeleteFormDialog(props: DeleteFormDialogProps) {
             Cancel
           </Button>
 
-          <Button variant="destructive">Delete</Button>
+          <Button onClick={onDelete} variant="destructive">
+            Delete
+          </Button>
         </div>
       </DialogContent>
     </Dialog>

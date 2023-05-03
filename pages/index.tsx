@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "@/components/common";
-import { Hero, Features } from "@/components/home";
-function index() {
+import { Hero } from "@/components/home";
+function Home() {
   return (
     <div>
       <Header />
@@ -10,4 +10,4 @@ function index() {
   );
 }
 
-export default index;
+export default Home;

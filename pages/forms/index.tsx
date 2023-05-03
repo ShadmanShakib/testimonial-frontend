@@ -1,27 +1,32 @@
-import React, { use } from "react";
+import React from "react";
 import { Sidebar } from "@/components/common";
 import {
   CreateFormDialog,
   DashHeader,
   DeleteFromDialog,
+  FormList,
 } from "@/features/dashboard/component";
+//services
 import { useGetAllFroms } from "@/features/formbuilder/services";
+import { deleteForm } from "@/features/dashboard/services";
+import { useDeleteForm } from "@/features/dashboard/hooks";
+
 import { useUiContext } from "@/lib/context";
-import { FormList } from "@/features/dashboard/component";
 
 import _ from "underscore";
 function Forms() {
-  //services to fetch data
-  const { isLoading, error, data } = useGetAllFroms();
-
   //Ui context
   const {
     isCreateFormDialog,
     openCreateFormDialog,
     closeCreateFormDialog,
     setDeleteFormDialog,
-    isDeleleFormDialog,
+    isDeleteFormDialog,
+    deleteFormId,
   } = useUiContext();
+  const { isLoading, error, data } = useGetAllFroms();
+  const { mutate } = useDeleteForm(deleteFormId);
+
   const setIsCreateFormDialog = () => {
     isCreateFormDialog ? closeCreateFormDialog() : openCreateFormDialog();
   };
@@ -52,7 +57,8 @@ function Forms() {
         setOpen={setIsCreateFormDialog}
       />
       <DeleteFromDialog
-        open={isDeleleFormDialog}
+        onDelete={() => mutate()}
+        open={isDeleteFormDialog}
         setOpen={setDeleteFormDialog}
       />
     </main>

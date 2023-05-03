@@ -22,6 +22,7 @@ export type UiContextType = UiContextState & {
   openCreateFormDialog: () => void;
   closeCreateFormDialog: () => void;
   setDeleteFormDialog: () => void;
+  setDeleteFormId: (id: string) => void;
   closeModal: any;
 };
 
@@ -71,10 +72,14 @@ const UiContextProvider = ({ children }: UiContextProps) => {
   const setDeleteFormDialog = useCallback(() => {
     dispatch({ type: "SET_DELETE_FORM_DIALOG" });
   }, []);
-
+  //set delete form id
+  const setDeleteFormId = (id: string) => {
+    dispatch({ type: "SET_DELETE_FORM_ID", payload: id });
+  };
   const uiContextValue = useMemo<UiContextType>(
     () => ({
       ...state,
+      setDeleteFormId,
       setDeleteFormDialog,
       toggleAccountDropDown,
       setSidebarIsActive,

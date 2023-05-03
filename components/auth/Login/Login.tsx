@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { Button } from "@ui/button";
 interface LoginFormValues {
   username: string;
   password: string;
@@ -15,6 +16,7 @@ export default function Login({ loginApi }: any) {
   const router = useRouter();
   const onSubmit = async (data: LoginFormValues) => {
     await loginApi({ username: data.username, password: data.password });
+    console.log(data);
     const access_token = localStorage.getItem("access_token");
     if (access_token) {
       router.push("/app");
@@ -62,12 +64,9 @@ export default function Login({ loginApi }: any) {
             </label>
             <input type="password" {...register("password")} />
           </div>
-          <button
-            type="submit"
-            className="rounded-md bg-brand py-2 px-4 text-white"
-          >
-            {"Login"}
-          </button>
+          <Button onClick={handleSubmit(onSubmit)} type="submit">
+            Login
+          </Button>
         </form>
       </div>
     </div>
