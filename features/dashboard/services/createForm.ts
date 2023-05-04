@@ -1,5 +1,11 @@
 import axios from "axios";
-import { type createFormData } from "./types";
+
+interface createFormData {
+  values: {
+    name: string;
+  };
+}
+
 export default async function createNewForm(data: createFormData) {
   //base url
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -15,6 +21,7 @@ export default async function createNewForm(data: createFormData) {
         "Content-Type": "application/json",
       },
     });
+    return response;
   } catch (error) {
     console.error("Error:", error);
   }
