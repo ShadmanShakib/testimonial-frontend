@@ -5,14 +5,16 @@ import { Input } from "@/components/ui";
 import { Button } from "@ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@ui/dialog";
 import { useCreateForm } from "../../hooks";
-
+import { useToast } from "@ui/use-toast";
 function CreateFormDialog(props: ICreateFormDialog) {
-  const { mutate, isLoading } = useCreateForm();
+  const { isLoading, isSuccess, mutateAsync } = useCreateForm();
+  const { toast } = useToast();
+  const { open, setOpen } = props;
   const {
     register,
     handleSubmit,
-
     formState: { errors },
+    reset,
   } = useForm<formData>();
   const onSubmit: SubmitHandler<formData> = async (data) => {
     const postData = {
@@ -20,9 +22,15 @@ function CreateFormDialog(props: ICreateFormDialog) {
         name: data.name,
       },
     };
-    mutate(postData);
+    await mutateAsync(postData);
+    if (!isLoading) {
+      setOpen();
+      reset();
+      toast({
+        title: "Form created successfully",
+      });
+    }
   };
-  const { open, setOpen } = props;
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -41,7 +49,7 @@ function CreateFormDialog(props: ICreateFormDialog) {
             <Input register={register} name="name" required type="text" />
 
             <Button variant="default" type="submit">
-              Submit
+              {isLoading ? "Creating..." : "Create"}
             </Button>
           </form>
         </div>
