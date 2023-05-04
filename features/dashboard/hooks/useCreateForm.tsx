@@ -8,11 +8,11 @@ interface createFormData {
 }
 export default function useCreateForm() {
   const queryClient = useQueryClient();
-  const { mutate, isLoading } = useMutation(
-    (data: createFormData) => createForm(data),
+  const { mutate, isLoading, isSuccess, mutateAsync } = useMutation(
+    async (data: createFormData) => await createForm(data),
     {
       onSuccess: () => queryClient.invalidateQueries("forms"),
     }
   );
-  return { mutate, isLoading };
+  return { mutate, isLoading, isSuccess, mutateAsync };
 }
