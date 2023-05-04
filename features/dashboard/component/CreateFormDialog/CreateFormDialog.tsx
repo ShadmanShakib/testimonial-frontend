@@ -4,9 +4,10 @@ import { ICreateFormDialog, formData } from "./types";
 import { Input } from "@/components/ui";
 import { Button } from "@ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@ui/dialog";
-import { createNewForm } from "@/features/formbuilder/services";
+import { useCreateForm } from "../../hooks";
 
 function CreateFormDialog(props: ICreateFormDialog) {
+  const { mutate, isLoading } = useCreateForm();
   const {
     register,
     handleSubmit,
@@ -19,7 +20,7 @@ function CreateFormDialog(props: ICreateFormDialog) {
         name: data.name,
       },
     };
-    createNewForm(postData);
+    mutate(postData);
   };
   const { open, setOpen } = props;
 
