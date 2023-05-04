@@ -5,7 +5,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@ui/dialog";
 import { Button } from "@ui/button";
 
@@ -17,6 +16,7 @@ interface DeleteFormDialogProps {
 }
 function DeleteFormDialog(props: DeleteFormDialogProps) {
   const { open, setOpen, onDelete, isLoading } = props;
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>

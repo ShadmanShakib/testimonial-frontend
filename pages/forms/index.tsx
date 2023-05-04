@@ -13,6 +13,7 @@ import { useDeleteForm } from "@/features/dashboard/hooks";
 import { useUiContext } from "@/lib/context";
 
 import _ from "underscore";
+import { useToast } from "@/components/ui/use-toast";
 function Forms() {
   //Ui context
   const {
@@ -24,12 +25,21 @@ function Forms() {
     deleteFormId,
   } = useUiContext();
   const { isLoading, error, data } = useGetAllFroms();
+  const { toast } = useToast();
   const deleteForm = useDeleteForm(deleteFormId);
 
   const setIsCreateFormDialog = () => {
     isCreateFormDialog ? closeCreateFormDialog() : openCreateFormDialog();
   };
-
+  const handleDeleteForm = async () => {
+    await deleteForm.mutateAsync();
+    if (!isLoading) {
+      setDeleteFormDialog();
+      toast({
+        title: "Form Deleted",
+      });
+    }
+  };
   return (
     <main className="relative flex">
       <Sidebar />
@@ -56,7 +66,7 @@ function Forms() {
         setOpen={setIsCreateFormDialog}
       />
       <DeleteFromDialog
-        onDelete={() => deleteForm.mutate()}
+        onDelete={handleDeleteForm}
         isLoading={deleteForm.isLoading}
         open={isDeleteFormDialog}
         setOpen={setDeleteFormDialog}
