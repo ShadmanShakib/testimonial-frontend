@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ICreateFormDialog, formData } from "./types";
 import { Input } from "@/components/ui";
@@ -6,10 +6,16 @@ import { Button } from "@ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@ui/dialog";
 import { useCreateForm } from "../../hooks";
 import { useToast } from "@ui/use-toast";
+import { useRouter } from "next/router";
 function CreateFormDialog(props: ICreateFormDialog) {
-  const { isLoading, isSuccess, mutateAsync } = useCreateForm();
-  const { toast } = useToast();
   const { open, setOpen } = props;
+
+  //hooks
+  const createForm = useCreateForm();
+  const { toast } = useToast();
+  const router = useRouter();
+
+  //form handling
   const {
     register,
     handleSubmit,
@@ -22,8 +28,8 @@ function CreateFormDialog(props: ICreateFormDialog) {
         name: data.name,
       },
     };
-    await mutateAsync(postData);
-    if (!isLoading) {
+    await createForm.mutateAsync(postData);
+    if (!createForm.isLoading) {
       setOpen();
       reset();
       toast({
@@ -31,7 +37,12 @@ function CreateFormDialog(props: ICreateFormDialog) {
       });
     }
   };
-
+  //navigating is _id is present
+  useEffect(() => {
+    if (createForm.data) {
+      router.push(`/forms/${createForm.data?._id}`);
+    }
+  }, [createForm.data, router]);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
@@ -49,7 +60,7 @@ function CreateFormDialog(props: ICreateFormDialog) {
             <Input register={register} name="name" required type="text" />
 
             <Button variant="default" type="submit">
-              {isLoading ? "Creating..." : "Create"}
+              {createForm.isLoading ? "Creating..." : "Create"}
             </Button>
           </form>
         </div>
