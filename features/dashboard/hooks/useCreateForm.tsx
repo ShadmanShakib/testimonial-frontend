@@ -1,18 +1,21 @@
 import { useMutation, useQueryClient } from "react-query";
 import { createForm } from "../services";
-
+import { useRouter } from "next/router";
 interface createFormData {
   values: {
     name: string;
   };
 }
 export default function useCreateForm() {
+  const router = useRouter();
   const queryClient = useQueryClient();
-  const { mutate, isLoading, isSuccess, mutateAsync } = useMutation(
-    async (data: createFormData) => await createForm(data),
+  const { isLoading, mutateAsync, data, isSuccess } = useMutation(
+    async (dataX: createFormData) => await createForm(dataX),
     {
-      onSuccess: () => queryClient.invalidateQueries("forms"),
+      onSuccess: () => {
+        queryClient.invalidateQueries("forms");
+      },
     }
   );
-  return { mutate, isLoading, isSuccess, mutateAsync };
+  return { isLoading, mutateAsync, data, isSuccess };
 }

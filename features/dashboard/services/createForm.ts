@@ -12,7 +12,7 @@ export default async function createNewForm(data: createFormData) {
   //bearer token
   const token = localStorage.getItem("access_token");
 
-  const endpoint = `${baseUrl}/form/new`;
+  const endpoint = `${baseUrl}/form`;
 
   try {
     const response = await axios.post(endpoint, data, {
@@ -21,7 +21,7 @@ export default async function createNewForm(data: createFormData) {
         "Content-Type": "application/json",
       },
     });
-    return response;
+    return response.data;
   } catch (error) {
     console.error("Error:", error);
   }
