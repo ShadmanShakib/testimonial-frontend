@@ -2,6 +2,7 @@ import React from "react";
 import { Login } from "@/components/auth";
 import { loginApi } from "@/utils/services/auth";
 import { useRouter } from "next/router";
+import { SignInForm } from "@/features/auth";
 
 function SignIn() {
   const router = useRouter();
@@ -18,6 +19,7 @@ function SignIn() {
           Welcome back
         </h1>
         <Login loginApi={loginApi} />
+        <SignInForm />
       </main>
     </div>
   );
