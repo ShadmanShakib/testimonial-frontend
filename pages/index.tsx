@@ -4,6 +4,7 @@ import { Hero } from "@/components/home";
 function Home() {
   return (
     <div>
+      <h1>Use app directory</h1>
       <Header />
       <Hero />
     </div>

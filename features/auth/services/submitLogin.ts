@@ -8,8 +8,8 @@ interface LoginData {
 interface LoginResponse {
   access_token: string;
 }
-export default async function doLoginAsync(loginData: LoginData) {
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/login`;
+export default async function submitLogin(loginData: LoginData) {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/auth/login`;
   const res = await axios.post(url, loginData);
   if (res.data) {
     const { access_token } = res.data;
