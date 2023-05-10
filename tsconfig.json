@@ -21,7 +21,9 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@features/*": ["./features/*"]
+      "@features/*": ["./features/*"],
+      "@lib/*": ["./lib/*"],
+      "@context/*": ["./lib/context/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
