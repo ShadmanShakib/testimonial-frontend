@@ -6,10 +6,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "@/lib/validations";
 import * as z from "zod";
+import { submitLogin } from "@features/auth/services";
+import { useRouter } from "next/navigation";
+import jscookie from "js-cookie";
 
-type Props = {};
 type FormData = z.infer<typeof LoginSchema>;
+type Props = {};
 const UserAuthForm = (props: Props) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -17,7 +21,14 @@ const UserAuthForm = (props: Props) => {
   } = useForm<FormData>({
     resolver: zodResolver(LoginSchema),
   });
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = async (data: FormData) => {
+    const res = await submitLogin(data);
+    if (res.access_token) {
+      jscookie.set("access_token", res.access_token);
+      router.push("/");
+    }
+  };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -32,13 +43,13 @@ const UserAuthForm = (props: Props) => {
         <p className="px-1 text-xs text-red-600">{errors.password.message}</p>
       )}
       <Button>Sign in</Button>
-      <div className="flex justify-between items-center">
+      {/* <div className="flex justify-between items-center">
         <div className="flex items-center">
-          <input {...register("remember")} type="checkbox" />
+          <input type="checkbox" />
           <label>Remember me</label>
         </div>
         <a href="#">Forgot Password?</a>
-      </div>
+      </div> */}
       <hr />
     </form>
   );
