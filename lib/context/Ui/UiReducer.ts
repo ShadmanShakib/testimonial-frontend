@@ -1,5 +1,7 @@
 "use client";
 export type UiContextState = {
+  //dashboard
+  isDropdown: boolean;
   sidebarIsActive:
     | "design"
     | "welcome"
@@ -20,6 +22,7 @@ export type UiContextState = {
   deleteFormId: string;
 };
 export const initialUiContextState: UiContextState = {
+  isDropdown: false,
   sidebarIsActive: null,
   modalIsOpen: false,
   activePreview: "default",
@@ -43,6 +46,9 @@ export type Action =
         | "thankyou"
         | "advanced"
         | null;
+    }
+  | {
+      type: "SET_ISDROPDOWN";
     }
   | { type: "SET_MODAL_IS_OPEN" }
   | {
@@ -78,6 +84,8 @@ function UiContextReducer(
   action: Action
 ): UiContextState {
   switch (action.type) {
+    case "SET_ISDROPDOWN":
+      return { ...state, isDropdown: !state.isDropdown };
     case "SET_SIDEBAR_IS_ACTIVE":
       return { ...state, sidebarIsActive: action.payload };
     case "TOGGLE_ACCOUNT_DROPDOWN":

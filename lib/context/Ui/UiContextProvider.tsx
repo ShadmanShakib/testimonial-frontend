@@ -24,12 +24,15 @@ export type UiContextType = UiContextState & {
   closeCreateFormDialog: () => void;
   setDeleteFormDialog: () => void;
   setDeleteFormId: (id: string) => void;
-  closeModal: any;
+  setIsDropdown: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const UiContextProvider = ({ children }: UiContextProps) => {
   const [state, dispatch] = useReducer(UiContextReducer, initialUiContextState);
-
+  //setting the dropdown
+  const setIsDropdown = useCallback(() => {
+    dispatch({ type: "SET_ISDROPDOWN" });
+  }, []);
   const setSidebarIsActive = (value: any | null) => {
     dispatch({ type: "SET_SIDEBAR_IS_ACTIVE", payload: value });
   };
@@ -80,6 +83,7 @@ const UiContextProvider = ({ children }: UiContextProps) => {
   const uiContextValue = useMemo<UiContextType>(
     () => ({
       ...state,
+      setIsDropdown,
       setDeleteFormId,
       setDeleteFormDialog,
       toggleAccountDropDown,
@@ -90,7 +94,7 @@ const UiContextProvider = ({ children }: UiContextProps) => {
       askForWebsiteHandler,
       askForAvatarHandler,
       toggleModalHandler,
-      closeModal,
+
       openCreateFormDialog,
       closeCreateFormDialog,
     }),
