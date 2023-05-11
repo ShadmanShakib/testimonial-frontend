@@ -2,14 +2,7 @@
 export type UiContextState = {
   //dashboard
   isDropdown: boolean;
-  sidebarIsActive:
-    | "design"
-    | "welcome"
-    | "response"
-    | "attribute"
-    | "thankyou"
-    | "advanced"
-    | null;
+
   isAccountDropDown: boolean;
   modalIsOpen: boolean;
   activePreview: "default" | "response" | "attribute" | "thanks";
@@ -23,7 +16,7 @@ export type UiContextState = {
 };
 export const initialUiContextState: UiContextState = {
   isDropdown: false,
-  sidebarIsActive: null,
+
   modalIsOpen: false,
   activePreview: "default",
   askForEmail: true,
@@ -36,17 +29,6 @@ export const initialUiContextState: UiContextState = {
   deleteFormId: "",
 };
 export type Action =
-  | {
-      type: "SET_SIDEBAR_IS_ACTIVE";
-      payload:
-        | "design"
-        | "welcome"
-        | "response"
-        | "attribute"
-        | "thankyou"
-        | "advanced"
-        | null;
-    }
   | {
       type: "SET_ISDROPDOWN";
     }
@@ -66,10 +48,7 @@ export type Action =
       type: "TOGGLE_ACCOUNT_DROPDOWN";
     }
   | {
-      type: "OPEN_CREATE_FORM_DIALOG";
-    }
-  | {
-      type: "CLOSE_CREATE_FORM_DIALOG";
+      type: "SET_CREATE_FORM_DIALOG";
     }
   | {
       type: "SET_DELETE_FORM_DIALOG";
@@ -86,8 +65,7 @@ function UiContextReducer(
   switch (action.type) {
     case "SET_ISDROPDOWN":
       return { ...state, isDropdown: !state.isDropdown };
-    case "SET_SIDEBAR_IS_ACTIVE":
-      return { ...state, sidebarIsActive: action.payload };
+
     case "TOGGLE_ACCOUNT_DROPDOWN":
       return { ...state, isAccountDropDown: !state.isAccountDropDown };
     case "SET_MODAL_IS_OPEN":
@@ -102,10 +80,9 @@ function UiContextReducer(
       return { ...state, askForWebsite: !state.askForWebsite };
     case "TOGGLE_ASK_FOR_AVATAR":
       return { ...state, askForAvatar: !state.askForAvatar };
-    case "OPEN_CREATE_FORM_DIALOG":
-      return { ...state, isCreateFormDialog: true };
-    case "CLOSE_CREATE_FORM_DIALOG":
-      return { ...state, isCreateFormDialog: false };
+    case "SET_CREATE_FORM_DIALOG":
+      return { ...state, isCreateFormDialog: !state.isCreateFormDialog };
+
     case "SET_DELETE_FORM_DIALOG":
       return {
         ...state,

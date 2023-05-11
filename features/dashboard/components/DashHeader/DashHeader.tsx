@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Button } from "@ui/button";
 import { Plus } from "lucide-react";
@@ -5,9 +6,10 @@ import { Plus } from "lucide-react";
 type Props = {
   title: string;
   description: string;
+  handleClick: () => void;
 };
 
-export default function DashHeader({ title, description }: Props) {
+export default function DashHeader({ title, description, handleClick }: Props) {
   return (
     <div className="flex items-center gap-2">
       {/* Title */}
@@ -18,7 +20,7 @@ export default function DashHeader({ title, description }: Props) {
       <div className="flex-grow"></div>
       {/* Side button */}
       <div>
-        <Button>
+        <Button onClick={handleClick}>
           <div>
             <Plus />
           </div>

@@ -12,7 +12,6 @@ type UiContextProps = {
 };
 
 export type UiContextType = UiContextState & {
-  setSidebarIsActive: React.Dispatch<React.SetStateAction<string | null>>;
   setActivePreview: React.Dispatch<React.SetStateAction<string>>;
   askForEmailHandler: () => void;
   askForHeadlineHandler: () => void;
@@ -20,8 +19,8 @@ export type UiContextType = UiContextState & {
   askForAvatarHandler: () => void;
   toggleModalHandler: () => void;
   toggleAccountDropDown: () => void;
-  openCreateFormDialog: () => void;
-  closeCreateFormDialog: () => void;
+  setCreateFormDialog: () => void;
+
   setDeleteFormDialog: () => void;
   setDeleteFormId: (id: string) => void;
   setIsDropdown: React.Dispatch<React.SetStateAction<boolean>>;
@@ -33,12 +32,7 @@ const UiContextProvider = ({ children }: UiContextProps) => {
   const setIsDropdown = useCallback(() => {
     dispatch({ type: "SET_ISDROPDOWN" });
   }, []);
-  const setSidebarIsActive = (value: any | null) => {
-    dispatch({ type: "SET_SIDEBAR_IS_ACTIVE", payload: value });
-  };
-  const closeModal = useMemo(() => {
-    dispatch({ type: "CLOSE_MODAL" });
-  }, []);
+
   const toggleModalHandler = () => {
     dispatch({ type: "SET_MODAL_IS_OPEN" });
   };
@@ -64,14 +58,12 @@ const UiContextProvider = ({ children }: UiContextProps) => {
   const toggleAccountDropDown = () => {
     dispatch({ type: "TOGGLE_ACCOUNT_DROPDOWN" });
   };
-  //open create form dialog
-  const openCreateFormDialog = useCallback(() => {
-    dispatch({ type: "OPEN_CREATE_FORM_DIALOG" });
+  //set create form dialog
+
+  const setCreateFormDialog = useCallback(() => {
+    dispatch({ type: "SET_CREATE_FORM_DIALOG" });
   }, []);
-  //colse create form dialog
-  const closeCreateFormDialog = useCallback(() => {
-    dispatch({ type: "CLOSE_CREATE_FORM_DIALOG" });
-  }, []);
+
   //set delete form dialog
   const setDeleteFormDialog = useCallback(() => {
     dispatch({ type: "SET_DELETE_FORM_DIALOG" });
@@ -87,16 +79,14 @@ const UiContextProvider = ({ children }: UiContextProps) => {
       setDeleteFormId,
       setDeleteFormDialog,
       toggleAccountDropDown,
-      setSidebarIsActive,
+
       setActivePreview,
       askForEmailHandler,
       askForHeadlineHandler,
       askForWebsiteHandler,
       askForAvatarHandler,
       toggleModalHandler,
-
-      openCreateFormDialog,
-      closeCreateFormDialog,
+      setCreateFormDialog,
     }),
     [state]
   );
