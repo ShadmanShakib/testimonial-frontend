@@ -1,5 +1,5 @@
 import React from "react";
-import { FormPage } from "@/features/dashboard/components";
+import { FormPage, FormList } from "@/features/dashboard/components";
 
 type Props = {};
 
@@ -7,6 +7,7 @@ export default function Dashboard({}: Props) {
   return (
     <div>
       <FormPage />
+      <FormList />
     </div>
   );
 }

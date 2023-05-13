@@ -2,6 +2,6 @@ import React from "react";
 
 type Props = {};
 
-export default function page({}: Props) {
-  return <div>import</div>;
+export default function Import({}: Props) {
+  return <div>Import</div>;
 }

@@ -22,6 +22,7 @@
     "paths": {
       "@/*": ["./*"],
       "@features/*": ["./features/*"],
+      "@auth/*": ["./features/auth/*"],
       "@lib/*": ["./lib/*"],
       "@context/*": ["./lib/context/*"],
       "@ui/*": ["./components/ui/*"]
